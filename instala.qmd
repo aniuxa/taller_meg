@@ -1,0 +1,17 @@
+# Instalación de R y Rstudio {.unnumbered}
+
+## Introducción a R
+
+{{< video https://youtu.be/YkN5urybh2A >}}
+
+## Instalación en OS
+
+{{< video https://youtu.be/icWV8jzYOtA >}}
+
+## Instalación en PC
+
+{{< video https://youtu.be/TNSQikMfgJI >}}
+
+## Ojo
+
+Desde octubre de 2022, RStudio se volvió **"Posit"**

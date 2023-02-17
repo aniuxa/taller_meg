@@ -1,0 +1,32 @@
+---
+title: "Taller Métodos cuantiativos"
+subtitle: "Dra. Ana Ruth Escoto"
+
+---
+
+## Introducción
+
+El curso es una introducción al uso de métodos cuantitativos aplicados a la investigación social, dirigido a estudiantes de la Maestría en Estudios de Género (MEG). La modalidad es teórica-reflexiva y aplicada, por lo cual se requiere la presencia, participación y lectura por parte de las estudiantes. 
+
+Este sitio nos servirá para la parte aplicada. 
+
+## Objetivo
+Fomentar habilidades investigativas en las y los estudiantes a través de la discusión de elementos teóricos y metodológicos para el diseño y ejecución de la investigación social cuantitativa. Estas habilidades también se fomentarán con la práctica de ejemplos con información secundaria y su interpretación. De tal cuenta que las estudiantes puedan adquirir herramientas que les permitan leer críticamente trabajos de investigación que hagan uso de diversos métodos cuantitativos, sobre todo aquéllos que reflexionen sobre el género.
+
+## Objetivos específicos del taller:
+Al final del curso el estudiantado podrá: 
+
+- Reconocer y aplicar los conceptos básicos del campo de la estadística descriptiva, principios de probabilidad, inferencia estadística, estimación y prueba de hipótesis;
+
+- Interpretar y entender las lógicas de la construcción de base de datos; 
+- Hacer e interpretar gráficas y cuadros para resumir información;
+- Manejar datos derivados de encuestas, censos y bases de datos en RStudio.
+- Reconocer aplicaciones los elementos básicos de la estadística descriptiva e inferencial.
+
+
+
+## Fuente a utilizar
+
+-  [ENDIREH2021](https://www.inegi.org.mx/programas/endireh/2021/)
+
+-  [matriz fusionada](/images/logo.png)

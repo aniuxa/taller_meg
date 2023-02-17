@@ -1,0 +1,69 @@
+---
+title: "Taller 1"
+---
+
+## Introducción
+
+En RStudio podemos tener varias ventanas que nos permiten tener más control de nuestro "ambiente", el historial, los "scripts" o códigos que escribimos y por supuesto, tenemos nuestra consola, que también tiene el símbolo "\>" con R. Podemos pedir operaciones básicas
+
+```{r 2}
+2+5
+5*3
+
+#Para escribir comentarios y que no los lea como operaciones ponemos el símbolo de gato
+# Lo podemos hacer para un comentario en una línea o la par de una instrucción
+1:5               # Secuencia 1-5
+
+seq(1, 10, 0.5)   # Secuencia con incrementos diferentes a 1
+
+c('a','b','c')  # Vector con caracteres
+1:7             # Entero
+40<80           # Valor logico
+2+2 == 5        # Valor logico
+T == TRUE       # T expresion corta de verdadero
+
+```
+
+R es un lenguaje de programación por objetos. Por lo cual vamos a tener objetos a los que se les asigna su contenido. Si usamos una flechita "\<-" o "-\>" le estamos asignando algo al objeto que apunta la felcha.
+
+```{r}
+x <- 24         # Asignacion de valor 24 a la variable x para su uso posterior (OBJETO)
+x/2             # Uso posterior de variable u objeto x
+x               # Imprime en pantalla el valor de la variable u objeto
+x <- TRUE       # Asigna el valor logico TRUE a la variable x OJO: x toma el ultimo valor que se le asigna
+x
+```
+
+## Vectores
+
+Los vectores son uno de los objetos más usados en R.
+
+```{r}
+dado<-1:6  # vector numérico
+pluscuamperfecto <- "hola" # el nombre puede ser más grande
+
+moneda<-c("Aguila", "Sol") # un objecto que tiene un vector de caracter
+```
+
+## Muestreo aleatorio
+
+Podemos usar la función `{sample()}`
+```{r}
+
+sample(1:19, size=1)
+
+sample(x=c("Erick", "Emmanuel", "Scandra", "Daniela", "Alberto"),
+       size=2)
+
+sample( x =1:6, 
+       size = 10,
+       replace = T,
+       prob= c(1/5,1/5,1/5, 0, 1/5, 1/5))
+
+
+sample(x = moneda,
+       size = 15,
+       replace = TRUE)
+
+```
+

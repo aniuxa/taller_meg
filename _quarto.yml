@@ -1,0 +1,39 @@
+project:
+  type: website
+  output-dir: "docs"
+
+website:
+  title: "Métodos Cuantitativos"
+  site-url: https://aniuxa.github.io/taller_meg/
+  repo-url: https://github.com/aniuxa/taller_meg/
+  repo-branch: main
+  repo-actions: [edit, issue]
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+      - href: docs.qmd
+        text: Documentos 
+ 
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+      - section: "Instalar R"
+        contents:
+          - instala.qmd
+      - section: "Talleres"
+        contents:
+          - P1.qmd
+
+    
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: darkly
+    css: styles.css
+    toc: true
+
+editor: visual
+
