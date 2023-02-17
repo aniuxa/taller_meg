@@ -3,7 +3,7 @@ title: "Documentos a consultar"
 ---
 
 ## Estructura de la base de datos 
-<iframe src="./datos/endireh_fd.pdf" title="Plan de Trabajo" width="960" height="500">
+<iframe src="./datos/endireh2021_fd.pdf" title="Plan de Trabajo" width="960" height="500">
 
 </iframe>
 
