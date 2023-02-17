@@ -71,7 +71,7 @@ library(skimr)
 
 
 ```{r}
-skimr::skim(endireh2021_CDMX)
+skimr::skim(endireh2021_CDMX)[,20]
 ```
 
 ## Paquete `{dplyr}`
@@ -87,7 +87,7 @@ library(dplyr)
 
 
 ```{r}
-dplyr::glimpse(endireh2021_CDMX)
+dplyr::glimpse(endireh2021_CDMX)[,20]
 ```
 
 ## Pipes o tuberías
@@ -95,7 +95,7 @@ dplyr::glimpse(endireh2021_CDMX)
 
 R utiliza dos pipes el nativo `|>` y el pipe que está en `{dplyr}` `%>%`. 
 
-{{< tweet user=ArthurWelle id=535429654760284161 >}}
+<https://twitter.com/ArthurWelle/status/1535429654760284161>
 
 
 Algunas de las diferencias las puedes checar acá <https://eliocamp.github.io/codigo-r/2021/05/r-pipa-nativa/>
@@ -104,11 +104,13 @@ En estas prácticas utilizaremos el segundo, pero son muy parecidos y para que e
 
 ```{r}
 endireh2021_CDMX |> #pipe nativo, no necesita instalación
+  select(starts_with("P7")) |>
   head()
 ```
 
 ```{r}
 endireh2021_CDMX  %>%  #pipe de dplyr, necesita instalación de dplyr en tidyverse
+  select(starts_with("P7")) %>% 
   head()
 ```
 
