@@ -30,7 +30,7 @@ website:
 format:
   html:
     theme: 
-      light: cosmo
+      light: pulse
       dark: darkly
     css: styles.css
     toc: true

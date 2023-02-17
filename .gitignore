@@ -4,4 +4,5 @@
 /.Rproj.user/
 
 /.quarto/
-*.RData
+datos/bd_endireh_2021.RData
+datos/endireh2021_pegada.RData

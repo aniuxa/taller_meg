@@ -34,36 +34,82 @@ x <- TRUE       # Asigna el valor logico TRUE a la variable x OJO: x toma el ult
 x
 ```
 
-## Vectores
 
-Los vectores son uno de los objetos más usados en R.
+## Importando la base 
 
 ```{r}
-dado<-1:6  # vector numérico
-pluscuamperfecto <- "hola" # el nombre puede ser más grande
 
-moneda<-c("Aguila", "Sol") # un objecto que tiene un vector de caracter
+load("datos/endireh2021_pegadaCDMX.RData")
+
 ```
 
-## Muestreo aleatorio
+Vamos a revisarla...
 
-Podemos usar la función `{sample()}`
 ```{r}
 
-sample(1:19, size=1)
-
-sample(x=c("Erick", "Emmanuel", "Scandra", "Daniela", "Alberto"),
-       size=2)
-
-sample( x =1:6, 
-       size = 10,
-       replace = T,
-       prob= c(1/5,1/5,1/5, 0, 1/5, 1/5))
+names(endireh2021_CDMX) # nos da los nombres
+```
 
 
-sample(x = moneda,
-       size = 15,
-       replace = TRUE)
+```{r}
+head(endireh2021_CDMX) # 6 lineas
+```
+
+
+## Paquete `{skimr}`
+
+Vamos a instalar un paquete. Esto se puede hacer con menús
 
 ```
+install.packages("skimr")
+```
+
+Cargamos el paquete
+```{r}
+library(skimr)
+```
+
+
+```{r}
+skimr::skim(endireh2021_CDMX)
+```
+
+## Paquete `{dplyr}`
+
+```
+install.packages("dplyr")
+```
+
+Cargamos el paquete
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+dplyr::glimpse(endireh2021_CDMX)
+```
+
+## Pipes o tuberías
+
+
+R utiliza dos pipes el nativo `|>` y el pipe que está en `{dplyr}` `%>%`. 
+
+{{< tweet user=ArthurWelle id=535429654760284161 >}}
+
+
+Algunas de las diferencias las puedes checar acá <https://eliocamp.github.io/codigo-r/2021/05/r-pipa-nativa/>
+
+En estas prácticas utilizaremos el segundo, pero son muy parecidos y para que esta instructora recicle algunos de sus códigos viejos. Pero funcionan igual:
+
+```{r}
+endireh2021_CDMX |> #pipe nativo, no necesita instalación
+  head()
+```
+
+```{r}
+endireh2021_CDMX  %>%  #pipe de dplyr, necesita instalación de dplyr en tidyverse
+  head()
+```
+
 

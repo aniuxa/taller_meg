@@ -1,0 +1,18 @@
+---
+title: "Documentos a consultar"
+---
+
+## Estructura de la base de datos 
+<iframe src="./datos/endireh_fd.pdf" title="Plan de Trabajo" width="960" height="500">
+
+</iframe>
+
+
+## Carpeta a descargar con datos y más
+
+Puedes descargarla [acá](https://www.dropbox.com/sh/tapvfev84g3x9aq/AADDtKVIdqoMjZKye1FrcShla?dl=0)
+
+Es bastante pesada, así que trabajaremos con la de la CDMX
+
+
+Si quieres ver cómo la pegué, puedes consultar el [script](./pegado.R)
