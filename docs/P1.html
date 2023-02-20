@@ -221,8 +221,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
   <li><a href="#importando-la-base" id="toc-importando-la-base" class="nav-link" data-scroll-target="#importando-la-base">Importando la base</a></li>
+  <li><a href="#paquetes" id="toc-paquetes" class="nav-link" data-scroll-target="#paquetes">Paquetes</a></li>
   <li><a href="#paquete-skimr" id="toc-paquete-skimr" class="nav-link" data-scroll-target="#paquete-skimr">Paquete <code>{skimr}</code></a></li>
   <li><a href="#paquete-dplyr" id="toc-paquete-dplyr" class="nav-link" data-scroll-target="#paquete-dplyr">Paquete <code>{dplyr}</code></a></li>
+  <li><a href="#paquete-pacman" id="toc-paquete-pacman" class="nav-link" data-scroll-target="#paquete-pacman">Paquete <code>{pacman}</code></a></li>
   <li><a href="#pipes-o-tuberías" id="toc-pipes-o-tuberías" class="nav-link" data-scroll-target="#pipes-o-tuberías">Pipes o tuberías</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aniuxa/taller_meg/edit/main/P1.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aniuxa/taller_meg/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -2725,16 +2727,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
+<section id="paquetes" class="level2">
+<h2 class="anchored" data-anchor-id="paquetes">Paquetes</h2>
+<p>Los paquetes los podemos instalar ya sea en el menú de paquetes en la ventana del lado derecho inferior (si tienes la configuración original) o podemos hacerlo por comandos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ima/paquete1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Paso1</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ima/paquete2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Paso2</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ima/paquete3.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Paso3</figcaption><p></p>
+</figure>
+</div>
+<p>Y se verá algo así en la consola</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ima/paquete4.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Paso4</figcaption><p></p>
+</figure>
+</div>
+<p>Esto es igual que instalemos los paquetes con comandos:</p>
+<pre><code>install.packages("janitor", dependencies = TRUE)</code></pre>
+<p>Después de instalados los paquetes o los palomeamos o los cargamos con un comando</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'janitor'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    chisq.test, fisher.test</code></pre>
+</div>
+</div>
+<p>Esto ya nos permite utilizarlos, es decir las funciones o comandos que vienen en ellos, ya pueden ser utilizados. Cargar los paquetes es una operación que se tiene que hacer en cada sesión (cuando abrimos) el programa R o RStudio. La instalación sólo se hace una vez.</p>
+<p>Veamos un par de paquetes más muy útiles.</p>
+</section>
 <section id="paquete-skimr" class="level2">
 <h2 class="anchored" data-anchor-id="paquete-skimr">Paquete <code>{skimr}</code></h2>
 <p>Vamos a instalar un paquete. Esto se puede hacer con menús</p>
 <pre><code>install.packages("skimr")</code></pre>
 <p>Cargamos el paquete</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(endireh2021_CDMX)[,<span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(endireh2021_CDMX)[,<span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,263 × 1
    numeric.hist
@@ -2758,7 +2806,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>install.packages("dplyr")</code></pre>
 <p>Cargamos el paquete</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -2775,7 +2823,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(endireh2021_CDMX)[,<span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(endireh2021_CDMX)[,<span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 3,267
 Columns: 2,263
@@ -5229,6 +5277,18 @@ $ EST_DIS    &lt;fct&gt; 0155, 0155, 0155, 0155, 0155, 0155, 0155, 0155, 0155, 0
 </div>
 </div>
 </section>
+<section id="paquete-pacman" class="level2">
+<h2 class="anchored" data-anchor-id="paquete-pacman">Paquete <code>{pacman}</code></h2>
+<p>En general, cuando hacemos nuestro código querremos verificar que nuestras librerías estén instaladas. Si actualizamos nuestro R y Rstudio es probable que hayamos perdido alguno.</p>
+<p>Este es un ejemplo de un código. Y vamos a introducir un paquete muy útil llamado <code>{pacman}</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pacman"</span>)) <span class="fu">install.packages</span>(<span class="st">"pacman"</span>) <span class="co"># instala pacman si se requiere</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: pacman</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, readxl, writexl, haven, sjlabelled, pollster) <span class="co">#carga los paquetes listados</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="pipes-o-tuberías" class="level2">
 <h2 class="anchored" data-anchor-id="pipes-o-tuberías">Pipes o tuberías</h2>
 <p>R utiliza dos pipes el nativo <code>|&gt;</code> y el pipe que está en <code>{dplyr}</code> <code>%&gt;%</code>.</p>
@@ -5236,9 +5296,9 @@ $ EST_DIS    &lt;fct&gt; 0155, 0155, 0155, 0155, 0155, 0155, 0155, 0155, 0155, 0
 <p>Algunas de las diferencias las puedes checar acá <a href="https://eliocamp.github.io/codigo-r/2021/05/r-pipa-nativa/" class="uri">https://eliocamp.github.io/codigo-r/2021/05/r-pipa-nativa/</a></p>
 <p>En estas prácticas utilizaremos el segundo, pero son muy parecidos y para que esta instructora recicle algunos de sus códigos viejos. Pero funcionan igual:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>endireh2021_CDMX <span class="sc">|&gt;</span> <span class="co">#pipe nativo, no necesita instalación</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"P7"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>endireh2021_CDMX <span class="sc">|&gt;</span> <span class="co">#pipe nativo, no necesita instalación</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"P7"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  P7_1 P7_2 P7_3 P7_4 P7_4E P7_5 P7_6_1 P7_6_2 P7_6_3 P7_6_4 P7_6_5 P7_6_6
 1    1    2 &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt; &lt;NA&gt;      2      2      1      1      2      1
@@ -5530,9 +5590,9 @@ $ EST_DIS    &lt;fct&gt; 0155, 0155, 0155, 0155, 0155, 0155, 0155, 0155, 0155, 0
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>endireh2021_CDMX  <span class="sc">%&gt;%</span>  <span class="co">#pipe de dplyr, necesita instalación de dplyr en tidyverse</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"P7"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>endireh2021_CDMX  <span class="sc">%&gt;%</span>  <span class="co">#pipe de dplyr, necesita instalación de dplyr en tidyverse</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"P7"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  P7_1 P7_2 P7_3 P7_4 P7_4E P7_5 P7_6_1 P7_6_2 P7_6_3 P7_6_4 P7_6_5 P7_6_6
 1    1    2 &lt;NA&gt; &lt;NA&gt;  &lt;NA&gt; &lt;NA&gt;      2      2      1      1      2      1
