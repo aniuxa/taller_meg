@@ -75,5 +75,19 @@
     "title": "Documentos a consultar",
     "section": "Carpeta a descargar con datos y más",
     "text": "Carpeta a descargar con datos y más\nPuedes descargarla acá\nEs bastante pesada, así que trabajaremos con la de la CDMX\nSi quieres ver cómo la pegué, puedes consultar el script"
+  },
+  {
+    "objectID": "P1.html#paquetes",
+    "href": "P1.html#paquetes",
+    "title": "Taller 1",
+    "section": "Paquetes",
+    "text": "Paquetes\nLos paquetes los podemos instalar ya sea en el menú de paquetes en la ventana del lado derecho inferior (si tienes la configuración original) o podemos hacerlo por comandos.\n\n\n\nPaso1\n\n\n\n\n\nPaso2\n\n\n\n\n\nPaso3\n\n\nY se verá algo así en la consola\n\n\n\nPaso4\n\n\nEsto es igual que instalemos los paquetes con comandos:\ninstall.packages(\"janitor\", dependencies = TRUE)\nDespués de instalados los paquetes o los palomeamos o los cargamos con un comando\n\nlibrary(janitor)\n\n\nAttaching package: 'janitor'\n\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\n\nEsto ya nos permite utilizarlos, es decir las funciones o comandos que vienen en ellos, ya pueden ser utilizados. Cargar los paquetes es una operación que se tiene que hacer en cada sesión (cuando abrimos) el programa R o RStudio. La instalación sólo se hace una vez.\nVeamos un par de paquetes más muy útiles."
+  },
+  {
+    "objectID": "P1.html#paquete-pacman",
+    "href": "P1.html#paquete-pacman",
+    "title": "Taller 1",
+    "section": "Paquete {pacman}",
+    "text": "Paquete {pacman}\nEn general, cuando hacemos nuestro código querremos verificar que nuestras librerías estén instaladas. Si actualizamos nuestro R y Rstudio es probable que hayamos perdido alguno.\nEste es un ejemplo de un código. Y vamos a introducir un paquete muy útil llamado {pacman}\n\nif (!require(\"pacman\")) install.packages(\"pacman\") # instala pacman si se requiere\n\nLoading required package: pacman\n\npacman::p_load(tidyverse, readxl, writexl, haven, sjlabelled, pollster) #carga los paquetes listados"
   }
 ]
