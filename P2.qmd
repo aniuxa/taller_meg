@@ -1,0 +1,175 @@
+---
+title: "Taller 2"
+---
+
+
+## Paquete `{pacman}`
+
+En general, cuando hacemos nuestro código querremos verificar que nuestras librerías estén instaladas. Si actualizamos nuestro R y Rstudio es probable que hayamos perdido alguno.
+
+Este es un ejemplo de un código. Y vamos a introducir un paquete muy útil llamado `{pacman}`
+
+```{r}
+if (!require("pacman")) install.packages("pacman") # instala pacman si se requiere
+pacman::p_load(tidyverse, readxl, writexl, haven,
+               sjlabelled, pollster, janitor, magrittr) #carga los paquetes listados
+
+```
+
+# Datos 
+
+```{r}
+load("datos/endireh2021_pegadaCDMX.RData")
+```
+
+## Pipes o tuberías
+
+R utiliza dos pipes el nativo `|>` y el pipe que está en `{dplyr}` `%>%`.
+
+<https://twitter.com/ArthurWelle/status/1535429654760284161>
+
+Algunas de las diferencias las puedes checar acá <https://eliocamp.github.io/codigo-r/2021/05/r-pipa-nativa/>
+
+En estas prácticas utilizaremos el segundo, pero son muy parecidos y para que esta instructora recicle algunos de sus códigos viejos. Pero funcionan igual:
+
+```{r}
+endireh2021_CDMX |> #pipe nativo, no necesita instalación
+  dplyr::select(starts_with("P7")) |>
+  head()
+```
+
+```{r}
+endireh2021_CDMX  %>%  #pipe de dplyr, necesita instalación de dplyr en tidyverse
+  dplyr::select(starts_with("P7")) %>% 
+  head()
+```
+
+
+```{r}
+endireh2021_CDMX  %>% 
+  dplyr::filter(T_INSTRUM=="A1")  # selecciona casos 
+
+```
+A1 es el instrumento para Mujer casada o unida con pareja residente
+
+### Ejemplo de etiquetado
+
+Para que se vea mejor nuestro tabulado, sería bueno que nuestras variables tuvieran etiqueta. Para ello utilizaremos el paquete `{sjlabelled}`
+
+Revisemos la sección 6-1. Todas las preguntas tienen los mismos valores. Vamos a generar un vector de caracter para esta etiqueta
+
+1. ¿Quién cree usted que debe
+ser responsable  del cuidado de los hijos(as), de las personas enfermas y ancianas?
+
+```{r}
+etiqueta_6_1<-c("la mujer", "el hombre", "ambos")
+```
+
+```{r}
+
+endireh2021_CDMX  %>%
+  mutate(P6_1_1=as.numeric(P6_1_1)) %>% 
+  mutate(P6_1_1=sjlabelled::set_labels(P6_1_1, labels=etiqueta_6_1)) %>% 
+  mutate(P6_1_1=sjlabelled::as_label(P6_1_1)) %>% 
+  janitor::tabyl(P6_1_1)
+         
+
+```
+!Ojo! todos estos cambios no quedaron guardados en la base, son pasos que hicimos antes del tabulado.
+
+### Un atajo
+
+Parece mucho trabajo, pero dejo un pequeño código... Esta base tiene muchas secciones parecidas. 
+Vamos a cambiar toda la sección y también a etiquetarla, podemos hacer las mismas operaciones para un grupo de variables con `mutate_at()`. Un pequeño atajo. 
+
+```{r}
+endireh2021_CDMX<- endireh2021_CDMX  %>% # esto asegura que los cambios queden en el objeto
+  dplyr::mutate_at(vars(starts_with("P6_1")), ~ as.numeric(.x) ) %>%  # Vuelve numérico todas las variables .x
+  dplyr::mutate_at(vars(starts_with("P6_1")), ~ set_labels(.x, labels=etiqueta_6_1)) # las etiqueta .x
+
+```
+
+Hoy sí ya podemos hacer tabulados con la certeza que los cambios están en la base y que podemos volver y venir de las etiquetas:
+
+```{r}
+
+# tabulado simple
+endireh2021_CDMX %>% 
+  dplyr::mutate(P6_1_1 = sjlabelled::as_label(P6_1_1)) %>% 
+  janitor::tabyl(P6_1_1)
+
+# tabulado con factor de expansión
+
+endireh2021_CDMX %>% 
+  dplyr::mutate(P6_1_1 = sjlabelled::as_label(P6_1_1)) %>% 
+  pollster::topline(P6_1_1 , weight = FAC_MUJ)
+
+# Dará un warning, lo podemos ignorar.
+```
+
+### Ojeando
+
+```{r}
+dplyr::glimpse(endireh2021_CDMX)
+dplyr::glimpse(endireh2021_CDMX[,20:30]) # en corchete del lado derecho podemos ojear columnas 
+
+```
+
+
+## Importación desde Excel
+
+El paquete más compatible con RStudio es readxl. A veces, otros paquetes tienen más problemas de configuración entre R y el Java.
+
+```{r 3}
+ICE_2022 <- readxl::read_excel("datos/ICE_2022.xlsx", sheet = "para_importar")
+
+```
+
+Como el nombre de paquete lo indica, sólo lee. Para escribir en este formato, recomiendo el paquete "writexl". Lo instalamos anteriormente.
+
+Si quisiéramos exportar un objeto a Excel
+
+```{r 5}
+writexl::write_xlsx(ICE_2022, path = "mi_exportacion.xlsx")
+```
+
+
+## Limpieza de nombres
+
+A este data.frame podemos limpiarle los nombres, como vemos, sus nombres están "raros". Esto pasa cuando usamos espacios, caracteres especiales o nombres muy largos. 
+
+Veamos los nombre
+
+```{r}
+ICE_2022 %>% 
+  names()
+```
+
+los vamos a limpiar:
+
+```{r}
+ICE_2022 %>% 
+  janitor::clean_names() %>% 
+  names()
+```
+
+Pero! Tenemos que volver a declarar el objeto con los cambios para que se guarden en el objeto
+
+
+```{r}
+ICE_2022<-ICE_2022 %>% 
+  janitor::clean_names()
+```
+
+
+## Otro operador
+
+Esta operación de guardar las acciones del *pipe*  `%>%`  en el mismo objeto del que inician, se puede hacer con otro operador muy parecido `%<>%`
+
+
+```{r}
+ICE_2022 %<>% 
+  janitor::clean_names()
+```
+
+¡Llevemos esta base a esquisse!

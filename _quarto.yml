@@ -25,6 +25,7 @@ website:
       - section: "Talleres"
         contents:
           - P1.qmd
+          - P2.qmd
 
     
 format:

@@ -53,10 +53,9 @@ names(endireh2021_CDMX) # nos da los nombres
 head(endireh2021_CDMX) # 6 lineas
 ```
 
-
 ## Paquetes
 
-Los paquetes los podemos instalar ya sea en el menú de paquetes en la ventana del lado derecho inferior (si tienes la configuración original) o podemos hacerlo por comandos. 
+Los paquetes los podemos instalar ya sea en el menú de paquetes en la ventana del lado derecho inferior (si tienes la configuración original) o podemos hacerlo por comandos.
 
 ![Paso1](ima/paquete1.png)
 
@@ -70,16 +69,15 @@ Y se verá algo así en la consola
 
 Esto es igual que instalemos los paquetes con comandos:
 
-```
-install.packages("janitor", dependencies = TRUE)
-```
+    install.packages("janitor", dependencies = TRUE)
 
 Después de instalados los paquetes o los palomeamos o los cargamos con un comando
+
 ```{r}
 library(janitor)
 ```
 
-Esto ya nos permite utilizarlos, es decir las funciones o comandos que vienen en ellos, ya pueden ser utilizados. Cargar los paquetes es una operación que se tiene que hacer en cada sesión (cuando abrimos) el programa R o RStudio. La instalación sólo se hace una vez. 
+Esto ya nos permite utilizarlos, es decir las funciones o comandos que vienen en ellos, ya pueden ser utilizados. Cargar los paquetes es una operación que se tiene que hacer en cada sesión (cuando abrimos) el programa R o RStudio. La instalación sólo se hace una vez.
 
 Veamos un par de paquetes más muy útiles.
 
@@ -111,41 +109,4 @@ library(dplyr)
 
 ```{r}
 dplyr::glimpse(endireh2021_CDMX)[,20]
-```
-
-
-
-## Paquete `{pacman}`
-
-En general, cuando hacemos nuestro código querremos verificar que nuestras librerías estén instaladas. Si actualizamos nuestro R y Rstudio es probable que hayamos perdido alguno.
-
-Este es un ejemplo de un código. Y vamos a introducir un paquete muy útil llamado `{pacman}`
-
-```{r}
-if (!require("pacman")) install.packages("pacman") # instala pacman si se requiere
-pacman::p_load(tidyverse, readxl, writexl, haven, sjlabelled, pollster) #carga los paquetes listados
-
-```
-
-
-## Pipes o tuberías
-
-R utiliza dos pipes el nativo `|>` y el pipe que está en `{dplyr}` `%>%`.
-
-<https://twitter.com/ArthurWelle/status/1535429654760284161>
-
-Algunas de las diferencias las puedes checar acá <https://eliocamp.github.io/codigo-r/2021/05/r-pipa-nativa/>
-
-En estas prácticas utilizaremos el segundo, pero son muy parecidos y para que esta instructora recicle algunos de sus códigos viejos. Pero funcionan igual:
-
-```{r}
-endireh2021_CDMX |> #pipe nativo, no necesita instalación
-  select(starts_with("P7")) |>
-  head()
-```
-
-```{r}
-endireh2021_CDMX  %>%  #pipe de dplyr, necesita instalación de dplyr en tidyverse
-  select(starts_with("P7")) %>% 
-  head()
 ```
