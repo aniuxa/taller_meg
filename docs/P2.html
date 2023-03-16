@@ -213,6 +213,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./P2.html" class="sidebar-item-text sidebar-link active">Taller 2</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./P3.html" class="sidebar-item-text sidebar-link">Taller 3</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -233,9 +238,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#un-atajo" id="toc-un-atajo" class="nav-link" data-scroll-target="#un-atajo">Un atajo</a></li>
   <li><a href="#ojeando" id="toc-ojeando" class="nav-link" data-scroll-target="#ojeando">Ojeando</a></li>
   </ul></li>
-  <li><a href="#importación-desde-excel" id="toc-importación-desde-excel" class="nav-link" data-scroll-target="#importación-desde-excel">Importación desde Excel</a></li>
-  <li><a href="#limpieza-de-nombres" id="toc-limpieza-de-nombres" class="nav-link" data-scroll-target="#limpieza-de-nombres">Limpieza de nombres</a></li>
-  <li><a href="#otro-operador" id="toc-otro-operador" class="nav-link" data-scroll-target="#otro-operador">Otro operador</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aniuxa/taller_meg/edit/main/P2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aniuxa/taller_meg/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -16243,212 +16245,9 @@ $ EDAD    &lt;chr&gt; "65", "67", "46", "33", "65", "59", "16", "60", "46", "75"
 $ P2_5    &lt;chr&gt; "97", "97", "01", "97", "97", "96", "02", "97", "96", "97", "9…</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="importación-desde-excel" class="level2">
-<h2 class="anchored" data-anchor-id="importación-desde-excel">Importación desde Excel</h2>
-<p>El paquete más compatible con RStudio es readxl. A veces, otros paquetes tienen más problemas de configuración entre R y el Java.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ICE_2022 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"datos/ICE_2022.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"para_importar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-• `` -&gt; `...75`</code></pre>
-</div>
-</div>
-<p>Como el nombre de paquete lo indica, sólo lee. Para escribir en este formato, recomiendo el paquete “writexl”. Lo instalamos anteriormente.</p>
-<p>Si quisiéramos exportar un objeto a Excel</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(ICE_2022, <span class="at">path =</span> <span class="st">"mi_exportacion.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="limpieza-de-nombres" class="level2">
-<h2 class="anchored" data-anchor-id="limpieza-de-nombres">Limpieza de nombres</h2>
-<p>A este data.frame podemos limpiarle los nombres, como vemos, sus nombres están “raros”. Esto pasa cuando usamos espacios, caracteres especiales o nombres muy largos.</p>
-<p>Veamos los nombre</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ICE_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "id"                                                                 
- [2] "edo"                                                                
- [3] "Homicidios"                                                         
- [4] "Secuestros"                                                         
- [5] "Robo de vehículos"                                                  
- [6] "Costos del delito"                                                  
- [7] "Incidencia delictiva"                                               
- [8] "Delitos no denunciados"                                             
- [9] "Percepción de seguridad"                                            
-[10] "Competencia en servicios notariales"                                
-[11] "Caudal tratado de aguas residuales"                                 
-[12] "Eficiencia económica del agua en la agricultura"                    
-[13] "Morbilidad por enfermedades respiratorias"                          
-[14] "Pérdida de superficie cubierta por árboles"                         
-[15] "Intensidad energética de la economía"                               
-[16] "Mujeres económicamente activas"                                     
-[17] "Brecha salarial de género"                                          
-[18] "Diferencia de informalidad laboral entre mujeres y hombres"         
-[19] "Grado de escolaridad"                                               
-[20] "Cobertura educativa"                                                
-[21] "Rendimiento académico"                                              
-[22] "Acceso a instituciones de salud"                                    
-[23] "Esperanza de vida"                                                  
-[24] "Mortalidad infantil"                                                
-[25] "Camas de hospital"                                                  
-[26] "Personal médico y de enfermería"                                    
-[27] "Personal médico con especialidad"                                   
-[28] "Migración neta"                                                     
-[29] "Percepción de corrupción estatal"                                   
-[30] "Percepción de corrupción en partidos políticos"                     
-[31] "Consulta de información de finanzas públicas"                       
-[32] "Participación ciudadana"                                            
-[33] "Competencia electoral"                                              
-[34] "Barreras a candidatos independientes"                               
-[35] "Agresiones a periodistas"                                           
-[36] "Interacción con el gobierno por medios electrónicos"                
-[37] "Barómetro de Información Presupuestal Estatal"                      
-[38] "Ingresos propios"                                                   
-[39] "Indicador subnacional de mejora regulatoria"                        
-[40] "Informalidad laboral"                                               
-[41] "Ingreso promedio de trabajadores de tiempo completo"                
-[42] "Desigualdad salarial"                                               
-[43] "Personas con ingresos por debajo de la línea de bienestar"          
-[44] "Jornadas laborales de más de 48 horas"                              
-[45] "Población con educación superior"                                   
-[46] "Capacitación laboral"                                               
-[47] "PIB per cápita"                                                     
-[48] "PIB en sectores de alto crecimiento"                                
-[49] "Crecimiento del PIB"                                                
-[50] "Deuda estatal y de organismos estatales (PIB)"                      
-[51] "Deuda estatal y de organismos estatales (participaciones federales)"
-[52] "Plazo promedio de vencimiento de la deuda"                          
-[53] "Costo promedio de la deuda"                                         
-[54] "Personas con ingresos mayores al promedio estatal"                  
-[55] "Población trabajadora"                                              
-[56] "Diversificación económica"                                          
-[57] "Telefonía móvil"                                                    
-[58] "Acceso a internet"                                                  
-[59] "Terminales punto de venta"                                          
-[60] "Cajeros automáticos"                                                
-[61] "Uso de banca móvil"                                                 
-[62] "Captación de ahorro"                                                
-[63] "Heridos en accidentes de tránsito terrestre"                        
-[64] "Accidentes por malas condiciones del camino"                        
-[65] "Flujo de pasajeros aéreos"                                          
-[66] "Carga aérea"                                                        
-[67] "Flujo de pasajeros aéreos internacionales"                          
-[68] "PIB turístico"                                                      
-[69] "Inversión extranjera directa"                                       
-[70] "Exportación de mercancías"                                          
-[71] "Complejidad económica en sectores de innovación"                    
-[72] "Productividad total de los factores"                                
-[73] "Centros de investigación"                                           
-[74] "Patentes"                                                           
-[75] "...75"                                                              
-[76] "Inversión"                                                          
-[77] "Talento"                                                            </code></pre>
-</div>
-</div>
-<p>los vamos a limpiar:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ICE_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "id"                                                               
- [2] "edo"                                                              
- [3] "homicidios"                                                       
- [4] "secuestros"                                                       
- [5] "robo_de_vehiculos"                                                
- [6] "costos_del_delito"                                                
- [7] "incidencia_delictiva"                                             
- [8] "delitos_no_denunciados"                                           
- [9] "percepcion_de_seguridad"                                          
-[10] "competencia_en_servicios_notariales"                              
-[11] "caudal_tratado_de_aguas_residuales"                               
-[12] "eficiencia_economica_del_agua_en_la_agricultura"                  
-[13] "morbilidad_por_enfermedades_respiratorias"                        
-[14] "perdida_de_superficie_cubierta_por_arboles"                       
-[15] "intensidad_energetica_de_la_economia"                             
-[16] "mujeres_economicamente_activas"                                   
-[17] "brecha_salarial_de_genero"                                        
-[18] "diferencia_de_informalidad_laboral_entre_mujeres_y_hombres"       
-[19] "grado_de_escolaridad"                                             
-[20] "cobertura_educativa"                                              
-[21] "rendimiento_academico"                                            
-[22] "acceso_a_instituciones_de_salud"                                  
-[23] "esperanza_de_vida"                                                
-[24] "mortalidad_infantil"                                              
-[25] "camas_de_hospital"                                                
-[26] "personal_medico_y_de_enfermeria"                                  
-[27] "personal_medico_con_especialidad"                                 
-[28] "migracion_neta"                                                   
-[29] "percepcion_de_corrupcion_estatal"                                 
-[30] "percepcion_de_corrupcion_en_partidos_politicos"                   
-[31] "consulta_de_informacion_de_finanzas_publicas"                     
-[32] "participacion_ciudadana"                                          
-[33] "competencia_electoral"                                            
-[34] "barreras_a_candidatos_independientes"                             
-[35] "agresiones_a_periodistas"                                         
-[36] "interaccion_con_el_gobierno_por_medios_electronicos"              
-[37] "barometro_de_informacion_presupuestal_estatal"                    
-[38] "ingresos_propios"                                                 
-[39] "indicador_subnacional_de_mejora_regulatoria"                      
-[40] "informalidad_laboral"                                             
-[41] "ingreso_promedio_de_trabajadores_de_tiempo_completo"              
-[42] "desigualdad_salarial"                                             
-[43] "personas_con_ingresos_por_debajo_de_la_linea_de_bienestar"        
-[44] "jornadas_laborales_de_mas_de_48_horas"                            
-[45] "poblacion_con_educacion_superior"                                 
-[46] "capacitacion_laboral"                                             
-[47] "pib_per_capita"                                                   
-[48] "pib_en_sectores_de_alto_crecimiento"                              
-[49] "crecimiento_del_pib"                                              
-[50] "deuda_estatal_y_de_organismos_estatales_pib"                      
-[51] "deuda_estatal_y_de_organismos_estatales_participaciones_federales"
-[52] "plazo_promedio_de_vencimiento_de_la_deuda"                        
-[53] "costo_promedio_de_la_deuda"                                       
-[54] "personas_con_ingresos_mayores_al_promedio_estatal"                
-[55] "poblacion_trabajadora"                                            
-[56] "diversificacion_economica"                                        
-[57] "telefonia_movil"                                                  
-[58] "acceso_a_internet"                                                
-[59] "terminales_punto_de_venta"                                        
-[60] "cajeros_automaticos"                                              
-[61] "uso_de_banca_movil"                                               
-[62] "captacion_de_ahorro"                                              
-[63] "heridos_en_accidentes_de_transito_terrestre"                      
-[64] "accidentes_por_malas_condiciones_del_camino"                      
-[65] "flujo_de_pasajeros_aereos"                                        
-[66] "carga_aerea"                                                      
-[67] "flujo_de_pasajeros_aereos_internacionales"                        
-[68] "pib_turistico"                                                    
-[69] "inversion_extranjera_directa"                                     
-[70] "exportacion_de_mercancias"                                        
-[71] "complejidad_economica_en_sectores_de_innovacion"                  
-[72] "productividad_total_de_los_factores"                              
-[73] "centros_de_investigacion"                                         
-[74] "patentes"                                                         
-[75] "x75"                                                              
-[76] "inversion"                                                        
-[77] "talento"                                                          </code></pre>
-</div>
-</div>
-<p>Pero! Tenemos que volver a declarar el objeto con los cambios para que se guarden en el objeto</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ICE_2022<span class="ot">&lt;-</span>ICE_2022 <span class="sc">%&gt;%</span> </span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="otro-operador" class="level2">
-<h2 class="anchored" data-anchor-id="otro-operador">Otro operador</h2>
-<p>Esta operación de guardar las acciones del <em>pipe</em> <code>%&gt;%</code> en el mismo objeto del que inician, se puede hacer con otro operador muy parecido <code>%&lt;&gt;%</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ICE_2022 <span class="sc">%&lt;&gt;%</span> </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>¡Llevemos esta base a esquisse!</p>
 
 
+</section>
 </section>
 </section>
 

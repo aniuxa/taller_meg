@@ -2,7 +2,6 @@
 title: "Taller 2"
 ---
 
-
 ## Paquete `{pacman}`
 
 En general, cuando hacemos nuestro código querremos verificar que nuestras librerías estén instaladas. Si actualizamos nuestro R y Rstudio es probable que hayamos perdido alguno.
@@ -16,7 +15,7 @@ pacman::p_load(tidyverse, readxl, writexl, haven,
 
 ```
 
-# Datos 
+# Datos
 
 ```{r}
 load("datos/endireh2021_pegadaCDMX.RData")
@@ -44,12 +43,12 @@ endireh2021_CDMX  %>%  #pipe de dplyr, necesita instalación de dplyr en tidyver
   head()
 ```
 
-
 ```{r}
 endireh2021_CDMX  %>% 
   dplyr::filter(T_INSTRUM=="A1")  # selecciona casos 
 
 ```
+
 A1 es el instrumento para Mujer casada o unida con pareja residente
 
 ### Ejemplo de etiquetado
@@ -58,8 +57,7 @@ Para que se vea mejor nuestro tabulado, sería bueno que nuestras variables tuvi
 
 Revisemos la sección 6-1. Todas las preguntas tienen los mismos valores. Vamos a generar un vector de caracter para esta etiqueta
 
-1. ¿Quién cree usted que debe
-ser responsable  del cuidado de los hijos(as), de las personas enfermas y ancianas?
+1.  ¿Quién cree usted que debe ser responsable del cuidado de los hijos(as), de las personas enfermas y ancianas?
 
 ```{r}
 etiqueta_6_1<-c("la mujer", "el hombre", "ambos")
@@ -75,12 +73,12 @@ endireh2021_CDMX  %>%
          
 
 ```
+
 !Ojo! todos estos cambios no quedaron guardados en la base, son pasos que hicimos antes del tabulado.
 
 ### Un atajo
 
-Parece mucho trabajo, pero dejo un pequeño código... Esta base tiene muchas secciones parecidas. 
-Vamos a cambiar toda la sección y también a etiquetarla, podemos hacer las mismas operaciones para un grupo de variables con `mutate_at()`. Un pequeño atajo. 
+Parece mucho trabajo, pero dejo un pequeño código... Esta base tiene muchas secciones parecidas. Vamos a cambiar toda la sección y también a etiquetarla, podemos hacer las mismas operaciones para un grupo de variables con `mutate_at()`. Un pequeño atajo.
 
 ```{r}
 endireh2021_CDMX<- endireh2021_CDMX  %>% # esto asegura que los cambios queden en el objeto
@@ -115,61 +113,3 @@ dplyr::glimpse(endireh2021_CDMX[,20:30]) # en corchete del lado derecho podemos 
 
 ```
 
-
-## Importación desde Excel
-
-El paquete más compatible con RStudio es readxl. A veces, otros paquetes tienen más problemas de configuración entre R y el Java.
-
-```{r 3}
-ICE_2022 <- readxl::read_excel("datos/ICE_2022.xlsx", sheet = "para_importar")
-
-```
-
-Como el nombre de paquete lo indica, sólo lee. Para escribir en este formato, recomiendo el paquete "writexl". Lo instalamos anteriormente.
-
-Si quisiéramos exportar un objeto a Excel
-
-```{r 5}
-writexl::write_xlsx(ICE_2022, path = "mi_exportacion.xlsx")
-```
-
-
-## Limpieza de nombres
-
-A este data.frame podemos limpiarle los nombres, como vemos, sus nombres están "raros". Esto pasa cuando usamos espacios, caracteres especiales o nombres muy largos. 
-
-Veamos los nombre
-
-```{r}
-ICE_2022 %>% 
-  names()
-```
-
-los vamos a limpiar:
-
-```{r}
-ICE_2022 %>% 
-  janitor::clean_names() %>% 
-  names()
-```
-
-Pero! Tenemos que volver a declarar el objeto con los cambios para que se guarden en el objeto
-
-
-```{r}
-ICE_2022<-ICE_2022 %>% 
-  janitor::clean_names()
-```
-
-
-## Otro operador
-
-Esta operación de guardar las acciones del *pipe*  `%>%`  en el mismo objeto del que inician, se puede hacer con otro operador muy parecido `%<>%`
-
-
-```{r}
-ICE_2022 %<>% 
-  janitor::clean_names()
-```
-
-¡Llevemos esta base a esquisse!

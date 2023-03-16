@@ -1,0 +1,131 @@
+---
+title: "Taller 3"
+---
+
+## Importación desde Excel
+
+
+```{r}
+if (!require("pacman")) install.packages("pacman") # instala pacman si se requiere
+pacman::p_load(tidyverse, readxl, writexl, haven, esquisse, 
+               sjlabelled, pollster, janitor, magrittr) #carga los paquetes listados
+
+```
+
+
+El paquete más compatible con RStudio es readxl. A veces, otros paquetes tienen más problemas de configuración entre R y el Java.  También podemos poner la liga a este archivo: <https://github.com/aniuxa/taller_meg/raw/main/datos/ICE_2022.xlsx>
+
+```{r 3}
+ICE_2022 <- readxl::read_excel("datos/ICE_2022.xlsx")
+
+```
+
+Como el nombre de paquete lo indica, sólo lee. Para escribir en este formato, recomiendo el paquete "writexl". Lo instalamos anteriormente.
+
+Si quisiéramos exportar un objeto a Excel
+
+```{r 5}
+writexl::write_xlsx(ICE_2022, path = "mi_exportacion.xlsx")
+```
+
+## Limpieza de nombres
+
+A este data.frame podemos limpiarle los nombres, como vemos, sus nombres están "raros". Esto pasa cuando usamos espacios, caracteres especiales o nombres muy largos.
+
+Veamos los nombre
+
+```{r}
+ICE_2022 %>% 
+  names()
+```
+
+los vamos a limpiar:
+
+```{r}
+ICE_2022 %>% 
+  janitor::clean_names() %>% 
+  names()
+```
+
+Pero! Tenemos que volver a declarar el objeto con los cambios para que se guarden en el objeto
+
+```{r}
+ICE_2022<-ICE_2022 %>% 
+  janitor::clean_names()
+```
+
+## Otro operador
+
+Esta operación de guardar las acciones del *pipe* `%>%` en el mismo objeto del que inician, se puede hacer con otro operador muy parecido `%<>%`
+
+```{r}
+ICE_2022 %<>% 
+  janitor::clean_names()
+```
+
+## Análisis descriptivo de variables cuantitativas
+
+### Medidas numéricas
+
+```{r}
+ICE_2022 %>% 
+  select(homicidios) %>% 
+  summary()
+```
+Un solo indicador
+
+```{r}
+ICE_2022 %>% 
+  dplyr::summarise(mi_media=mean(homicidios, na.rm=T))
+```
+Puedo agregar indicadores:
+
+
+```{r}
+ICE_2022 %>% 
+  dplyr::summarise(mi_media=mean(homicidios, na.rm=T), 
+                   mi_sd=sd(homicidios, na.rm=T))
+```
+
+### Gráficas
+
+
+```{r}
+ICE_2022 %>% 
+  with(
+    hist(homicidios)
+  )
+```
+
+
+```{r}
+ICE_2022 %>% 
+  with(
+    boxplot(homicidios)
+  )
+```
+
+Estas gráficas no se pueden guardar como objeto, pero a veces sí guardan información
+
+
+```{r}
+boxplot<-ICE_2022 %>% 
+  with(
+    boxplot(homicidios)
+  )
+```
+
+¿Qué tiene este objeto? Es una lista de información
+```{r}
+class(boxplot)
+
+```
+ Para ver los elementos de una lista podemos usar también los "$"
+ 
+```{r}
+boxplot$stats
+```
+ Acá estan los valores de los cinco números
+
+
+¡Llevemos esta base a esquisse!
