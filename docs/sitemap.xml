@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://aniuxa.github.io/taller_meg/index.html</loc>
+    <lastmod>2023-03-29T15:27:18.822Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/instala.html</loc>
+    <lastmod>2023-03-29T15:27:19.179Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/P1.html</loc>
+    <lastmod>2023-03-29T15:29:09.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/P2.html</loc>
+    <lastmod>2023-03-29T15:29:15.514Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/P3.html</loc>
+    <lastmod>2023-03-29T15:29:17.588Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/docs.html</loc>
+    <lastmod>2023-03-29T15:29:17.894Z</lastmod>
+  </url>
+  <url>
     <loc>https://aniuxa.github.io/taller_meg/P4.html</loc>
-    <lastmod>2023-03-29T15:26:44.235Z</lastmod>
+    <lastmod>2023-03-29T15:29:23.221Z</lastmod>
   </url>
 </urlset>
