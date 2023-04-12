@@ -48,6 +48,6 @@ ICE_2022 %>%
 
 ## Revisión de la nueva base
 
-<https://www.dropbox.com/s/fewoho15gomp68o/endireh2021_sel_muj.RData?dl=0>
+<https://www.dropbox.com/s/lk2eqmro8e1n4wo/endireh2021_sel_muj.RData?dl=0>
 
 Tenemos un par de índices

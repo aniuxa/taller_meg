@@ -69,7 +69,9 @@ Y se verá algo así en la consola
 
 Esto es igual que instalemos los paquetes con comandos:
 
-    install.packages("janitor", dependencies = TRUE)
+```         
+install.packages("janitor", dependencies = TRUE)
+```
 
 Después de instalados los paquetes o los palomeamos o los cargamos con un comando
 
@@ -85,7 +87,9 @@ Veamos un par de paquetes más muy útiles.
 
 Vamos a instalar un paquete. Esto se puede hacer con menús
 
-    install.packages("skimr")
+```         
+install.packages("skimr")
+```
 
 Cargamos el paquete
 
@@ -99,7 +103,9 @@ skimr::skim(endireh2021_CDMX)[,20]
 
 ## Paquete `{dplyr}`
 
-    install.packages("dplyr")
+```         
+install.packages("dplyr")
+```
 
 Cargamos el paquete
 

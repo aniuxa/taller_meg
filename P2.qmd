@@ -112,4 +112,3 @@ dplyr::glimpse(endireh2021_CDMX)
 dplyr::glimpse(endireh2021_CDMX[,20:30]) # en corchete del lado derecho podemos ojear columnas 
 
 ```
-

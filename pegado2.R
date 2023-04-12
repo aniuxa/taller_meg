@@ -10,14 +10,9 @@
 
 if (!require("pacman")) install.packages("pacman")#instala pacman si se requiere
 pacman::p_load(tidyverse,
-               haven,
                sjlabelled, 
                janitor,
-               ggpubr,
-               magrittr,
-               EDA,
-               explore,
-               gt)
+               magrittr)
 
 ## Cargando los datos ----
 
@@ -152,6 +147,9 @@ for (i in vars_demo) {
 
 }
   
+
+tabyl(sjlabelled::as_label(endireh2021_corta_muj$NIV))
+
 
 ### label seccion demo ----
 endireh2021_corta_muj %<>%		
@@ -1312,7 +1310,7 @@ roles_6_2 %<>%
   select(ID_VIV, ID_PER, index_roles)
 
 endireh2021_corta_muj %<>% 
-  merge(roles_6_2,by=c("ID_VIV", "ID_PER"), all.x=T) %>% 
+  left_join(roles_6_2,by=c("ID_VIV", "ID_PER")) %>% 
   mutate(index_roles=set_label(index_roles, label="Indice roles de género (acuerdo/desacuerdo"))
 
 rm(roles_6_2)
@@ -1339,7 +1337,7 @@ labo_8_9 %<>%
   select(ID_VIV, ID_PER, index_labo9)
 
 endireh2021_corta_muj %<>% 
-  merge(labo_8_9 ,by=c("ID_VIV", "ID_PER"), all.x=T) %>% 
+  left_join(labo_8_9 ,by=c("ID_VIV", "ID_PER")) %>% 
   mutate(index_labo9=set_label(index_labo9, label="Indice víctima de violencia laboral"))
 
 rm(labo_8_9)
@@ -1360,7 +1358,7 @@ labo_8_11 %<>%
   select(ID_VIV, ID_PER, index_labo11)
 
 endireh2021_corta_muj %<>% 
-  merge(labo_8_11 ,by=c("ID_VIV", "ID_PER"), all.x=T) %>% 
+  left_join(labo_8_11 ,by=c("ID_VIV", "ID_PER")) %>% 
   mutate(index_labo9=set_label(index_labo9, label="Indice frecuencia de violencia laboral en el último año"))
 
 
@@ -1388,7 +1386,7 @@ pareja_13_1_1 %<>%
   select(ID_VIV, ID_PER, index_pareja_13_1_1)
 
 endireh2021_corta_muj %<>% 
-  merge(pareja_13_1_1 ,by=c("ID_VIV", "ID_PER"), all.x=T) 
+  left_join(pareja_13_1_1 ,by=c("ID_VIV", "ID_PER")) 
 
 
 endireh2021_corta_muj %>% 
@@ -1408,7 +1406,7 @@ pareja_13_1_2 %<>%
   select(ID_VIV, ID_PER, index_pareja_13_1_2)
 
 endireh2021_corta_muj %<>% 
-  merge(pareja_13_1_2 ,by=c("ID_VIV", "ID_PER"), all.x=T) 
+  left_join(pareja_13_1_2 ,by=c("ID_VIV", "ID_PER")) 
 
 
 
@@ -1427,7 +1425,7 @@ pareja_13_1_3 %<>%
   select(ID_VIV, ID_PER, index_pareja_13_1_3)
 
 endireh2021_corta_muj %<>% 
-  merge(pareja_13_1_3 ,by=c("ID_VIV", "ID_PER"), all.x=T) 
+  left_join(pareja_13_1_3 ,by=c("ID_VIV", "ID_PER")) 
 
 
 pareja_13_1_4 <-  endireh2021_corta_muj %>% 
@@ -1443,10 +1441,15 @@ pareja_13_1_4 %<>%
   select(ID_VIV, ID_PER, index_pareja_13_1_4)
 
 endireh2021_corta_muj %<>% 
-  merge(pareja_13_1_4 ,by=c("ID_VIV", "ID_PER"), all.x=T) 
+  left_join(pareja_13_1_4 ,by=c("ID_VIV", "ID_PER")) 
 
 rm( pareja_13_1_1, pareja_13_1_2, pareja_13_1_3, pareja_13_1_4)
 
 endireh2021_corta_muj %>% 
   select(starts_with("index")) %>% 
   summary()
+
+
+tabyl(endireh2021_corta_muj$GRA)
+tabyl(sjlabelled::as_label(endireh2021_corta_muj$NIV))
+      
