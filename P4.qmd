@@ -1,0 +1,53 @@
+---
+title: "Taller 4"
+---
+
+```{r}
+if (!require("pacman")) install.packages("pacman") # instala pacman si se requiere
+pacman::p_load(tidyverse, readxl, writexl, haven, esquisse, 
+               sjlabelled, pollster, janitor, magrittr, GGally, corrr) #carga los paquetes listados
+
+```
+
+## Datos ---
+
+<https://github.com/aniuxa/taller_meg/raw/main/datos/ICE_2022.xlsx>
+
+```{r 3}
+ICE_2022 <- readxl::read_excel("datos/ICE_2022.xlsx") %>%  clean_names()
+
+```
+
+## Descriptivos bivariados: cuanti vs cuanti
+
+```{r}
+
+ICE_2022 %>%
+  select(-c(id, edo)) %>%
+  select(1:10) %>% 
+  GGally::ggpairs()
+```
+
+```{r}
+
+ICE_2022 %>%
+ with(
+   correlate(homicidios, secuestros)
+ )
+
+```
+
+```{r}
+
+ICE_2022 %>%
+ with(
+   lm(homicidios ~  secuestros)
+ )
+
+```
+
+## Revisión de la nueva base
+
+<https://www.dropbox.com/s/fewoho15gomp68o/endireh2021_sel_muj.RData?dl=0>
+
+Tenemos un par de índices

@@ -27,6 +27,7 @@ website:
           - P1.qmd
           - P2.qmd
           - P3.qmd
+          - P4.qmd
 
     
 format:

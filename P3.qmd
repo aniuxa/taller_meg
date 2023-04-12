@@ -4,7 +4,6 @@ title: "Taller 3"
 
 ## Importación desde Excel
 
-
 ```{r}
 if (!require("pacman")) install.packages("pacman") # instala pacman si se requiere
 pacman::p_load(tidyverse, readxl, writexl, haven, esquisse, 
@@ -12,8 +11,7 @@ pacman::p_load(tidyverse, readxl, writexl, haven, esquisse,
 
 ```
 
-
-El paquete más compatible con RStudio es readxl. A veces, otros paquetes tienen más problemas de configuración entre R y el Java.  También podemos poner la liga a este archivo: <https://github.com/aniuxa/taller_meg/raw/main/datos/ICE_2022.xlsx>
+El paquete más compatible con RStudio es readxl. A veces, otros paquetes tienen más problemas de configuración entre R y el Java. También podemos poner la liga a este archivo: <https://github.com/aniuxa/taller_meg/raw/main/datos/ICE_2022.xlsx>
 
 ```{r 3}
 ICE_2022 <- readxl::read_excel("datos/ICE_2022.xlsx")
@@ -72,14 +70,15 @@ ICE_2022 %>%
   select(homicidios) %>% 
   summary()
 ```
+
 Un solo indicador
 
 ```{r}
 ICE_2022 %>% 
   dplyr::summarise(mi_media=mean(homicidios, na.rm=T))
 ```
-Puedo agregar indicadores:
 
+Puedo agregar indicadores:
 
 ```{r}
 ICE_2022 %>% 
@@ -89,14 +88,12 @@ ICE_2022 %>%
 
 ### Gráficas
 
-
 ```{r}
 ICE_2022 %>% 
   with(
     hist(homicidios)
   )
 ```
-
 
 ```{r}
 ICE_2022 %>% 
@@ -107,7 +104,6 @@ ICE_2022 %>%
 
 Estas gráficas no se pueden guardar como objeto, pero a veces sí guardan información
 
-
 ```{r}
 boxplot<-ICE_2022 %>% 
   with(
@@ -116,16 +112,18 @@ boxplot<-ICE_2022 %>%
 ```
 
 ¿Qué tiene este objeto? Es una lista de información
+
 ```{r}
 class(boxplot)
 
 ```
- Para ver los elementos de una lista podemos usar también los "$"
- 
+
+Para ver los elementos de una lista podemos usar también los "\$"
+
 ```{r}
 boxplot$stats
 ```
- Acá estan los valores de los cinco números
 
+Acá estan los valores de los cinco números
 
 ¡Llevemos esta base a esquisse!
