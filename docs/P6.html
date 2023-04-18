@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Métodos Cuantitativos - Taller práctico II</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Métodos Cuantitativos</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./docs.html">
+ <span class="menu-text">Documentos</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Taller práctico II</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Instalar R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./instala.html" class="sidebar-item-text sidebar-link">Instalación de R y Rstudio</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Talleres</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./P1.html" class="sidebar-item-text sidebar-link">Taller 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./P2.html" class="sidebar-item-text sidebar-link">Taller 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./P3.html" class="sidebar-item-text sidebar-link">Taller 3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./P4.html" class="sidebar-item-text sidebar-link">Taller 4</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./P5.html" class="sidebar-item-text sidebar-link">Taller práctico I</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./P6.html" class="sidebar-item-text sidebar-link active">Taller práctico II</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#datos" id="toc-datos" class="nav-link active" data-scroll-target="#datos">Datos</a></li>
+  <li><a href="#análisis-cuantitativo-bivariado-cuali---cuali" id="toc-análisis-cuantitativo-bivariado-cuali---cuali" class="nav-link" data-scroll-target="#análisis-cuantitativo-bivariado-cuali---cuali">Análisis cuantitativo bivariado Cuali - cuali</a>
+  <ul class="collapse">
+  <li><a href="#tabulados-de-doble-entrada-sin-factor-de-expansión" id="toc-tabulados-de-doble-entrada-sin-factor-de-expansión" class="nav-link" data-scroll-target="#tabulados-de-doble-entrada-sin-factor-de-expansión">Tabulados de doble entrada sin factor de expansión</a></li>
+  <li><a href="#tabulados-de-doble-entrada-con-factor-de-expansión" id="toc-tabulados-de-doble-entrada-con-factor-de-expansión" class="nav-link" data-scroll-target="#tabulados-de-doble-entrada-con-factor-de-expansión">Tabulados de doble entrada con factor de expansión</a></li>
+  <li><a href="#gráficas-con-esquisse" id="toc-gráficas-con-esquisse" class="nav-link" data-scroll-target="#gráficas-con-esquisse">Gráficas con <code>{esquisse}</code></a></li>
+  </ul></li>
+  <li><a href="#análisis-cuantitativo-bivariado-cuali---cuanti" id="toc-análisis-cuantitativo-bivariado-cuali---cuanti" class="nav-link" data-scroll-target="#análisis-cuantitativo-bivariado-cuali---cuanti">Análisis cuantitativo bivariado Cuali - cuanti</a>
+  <ul class="collapse">
+  <li><a href="#medidas-númericas" id="toc-medidas-númericas" class="nav-link" data-scroll-target="#medidas-númericas">Medidas númericas</a></li>
+  <li><a href="#gráficas-con-esquisse-1" id="toc-gráficas-con-esquisse-1" class="nav-link" data-scroll-target="#gráficas-con-esquisse-1">Gráficas con <code>{esquisse}</code></a></li>
+  </ul></li>
+  <li><a href="#análisis-cuantitativo-bivariado-cuanti---cuanti" id="toc-análisis-cuantitativo-bivariado-cuanti---cuanti" class="nav-link" data-scroll-target="#análisis-cuantitativo-bivariado-cuanti---cuanti">Análisis cuantitativo bivariado Cuanti - cuanti</a>
+  <ul class="collapse">
+  <li><a href="#medidas-númericas-1" id="toc-medidas-númericas-1" class="nav-link" data-scroll-target="#medidas-númericas-1">Medidas númericas</a></li>
+  <li><a href="#gráficas-con-ggallyggpairs" id="toc-gráficas-con-ggallyggpairs" class="nav-link" data-scroll-target="#gráficas-con-ggallyggpairs">Gráficas con <code>GGally:ggpairs()</code></a></li>
+  <li><a href="#gráficas-individuales-de-correlación-con-ggplot2" id="toc-gráficas-individuales-de-correlación-con-ggplot2" class="nav-link" data-scroll-target="#gráficas-individuales-de-correlación-con-ggplot2">Gráficas individuales de correlación con <code>{ggplot2}</code></a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aniuxa/taller_meg/edit/main/P6.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aniuxa/taller_meg/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Taller práctico II</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pacman"</span>)) <span class="fu">install.packages</span>(<span class="st">"pacman"</span>) <span class="co"># instala pacman si se requiere</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: pacman</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, readxl, writexl, haven, esquisse, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               sjlabelled, pollster, janitor, magrittr, GGally, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               scales, corrr, ggthemes) <span class="co">#carga los paquetes listados</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="datos" class="level2">
+<h2 class="anchored" data-anchor-id="datos">Datos</h2>
+<p>Tenemos la base etiquetada acá, hay que descargarla y ponerla en nuestra carpeta de datos en nuestro proyecto <a href="https://www.dropbox.com/s/pud43k27iwfr73d/endireh2021_sel_muj.RData?dl=0" class="uri">https://www.dropbox.com/s/pud43k27iwfr73d/endireh2021_sel_muj.RData?dl=0</a></p>
+<p>La cargamos con el siguiente código</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"datos/endireh2021_sel_muj.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Hay dos opciones:</p>
+<ol type="1">
+<li>Vuelves a hacer tu selección</li>
+<li>Vuelves a correr todo tu código final del taller pasado.</li>
+</ol>
+<p><strong>NO OLVIDES APLICAR LOS FILTROS NECESARIOS PARA TUS VARIABLES</strong></p>
+<p>Para hacer esta práctica yo eligiré un par de variables para hacer los ejemplos del análisis cuantitativo bivariado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>base<span class="ot">&lt;-</span> endireh2021_corta_muj <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(EDAD<span class="sc">&lt;</span><span class="dv">98</span>) <span class="sc">%&gt;%</span> <span class="co"># ejemplo de filtro</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"ID"</span>), PAREN<span class="sc">:</span>T_INSTRUM, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>         ANIOS_ESC, <span class="fu">starts_with</span>(<span class="st">"index"</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         P6_2_4, FAC_MUJ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>RECUERDA QUE TODO DEPENDE DE TUS VARIABLES</p>
+<p>El diccionario de datos está acá <a href="https://www.inegi.org.mx/rnm/index.php/catalog/801/data-dictionary/" class="uri">https://www.inegi.org.mx/rnm/index.php/catalog/801/data-dictionary/</a></p>
+</section>
+<section id="análisis-cuantitativo-bivariado-cuali---cuali" class="level2">
+<h2 class="anchored" data-anchor-id="análisis-cuantitativo-bivariado-cuali---cuali">Análisis cuantitativo bivariado Cuali - cuali</h2>
+<section id="tabulados-de-doble-entrada-sin-factor-de-expansión" class="level3">
+<h3 class="anchored" data-anchor-id="tabulados-de-doble-entrada-sin-factor-de-expansión">Tabulados de doble entrada sin factor de expansión</h3>
+<p>Uso: condición indígena y ¿Está usted de acuerdo en que las mujeres casadas deben tener relaciones sexuales con su esposo cuando él quiera?</p>
+<p>Este es un código para dar la tabla de frecuencias simple. Nos da las frecuencias</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulado sin expansión</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P2_10 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P2_10)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(P6_2_4, P2_10, <span class="at">show_mising_leveles=</span>F) <span class="sc">%&gt;%</span> <span class="co"># tabulado NO quiero que me aparezcan categorías en cero</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_totals</span>(<span class="at">where =</span> <span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             P6_2_4    Sí Sí, en parte    No No sabe  Total
+    Sí (de acuerdo)  3120          129  5130     139   8518
+ No (en desacuerdo) 27398         1374 71409    1358 101539
+              Total 30518         1503 76539    1497 110057</code></pre>
+</div>
+</div>
+<p>La primera variable genera los valores de las filas y la segunda las columnas. Checa que tus categorías no sean tan pequeñitas.</p>
+<p>No nos da porcentajes a menos que se los pidamos. Lo dejo acá, <strong>pero no lo solicito en el trabajo</strong>, en el trabajo sólo quiero los valores expandidos.</p>
+<p><em>Porcentaje de filas</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P2_10 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P2_10)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(P6_2_4, P2_10, <span class="at">show_mising_leveles=</span>F) <span class="sc">%&gt;%</span> <span class="co"># tabulado NO quiero que me aparezcan categorías en cero</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_totals</span>(<span class="at">where =</span> <span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>)) <span class="sc">%&gt;%</span> <span class="co"># totales</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_percentages</span>(<span class="at">denominator =</span> <span class="st">"row"</span>) <span class="sc">%&gt;%</span> <span class="co"># aquí pongo el denominador</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_pct_formatting</span>(<span class="at">digits=</span><span class="dv">2</span>) <span class="co"># numero de decimales</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             P6_2_4     Sí Sí, en parte     No No sabe   Total
+    Sí (de acuerdo) 36.63%        1.51% 60.23%   1.63% 100.00%
+ No (en desacuerdo) 26.98%        1.35% 70.33%   1.34% 100.00%
+              Total 27.73%        1.37% 69.54%   1.36% 100.00%</code></pre>
+</div>
+</div>
+<p><em>porcentaje de columnas</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P2_10 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P2_10)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(P6_2_4, P2_10, <span class="at">show_mising_leveles=</span>F) <span class="sc">%&gt;%</span> <span class="co"># tabulado NO quiero que me aparezcan categorías en cero</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_totals</span>(<span class="at">where =</span> <span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>)) <span class="sc">%&gt;%</span> <span class="co"># totales</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_percentages</span>(<span class="at">denominator =</span> <span class="st">"col"</span>) <span class="sc">%&gt;%</span> <span class="co"># aquí pongo el denominador</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_pct_formatting</span>(<span class="at">digits=</span><span class="dv">2</span>) <span class="co"># numero de decimales</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             P6_2_4      Sí Sí, en parte      No No sabe   Total
+    Sí (de acuerdo)  10.22%        8.58%   6.70%   9.29%   7.74%
+ No (en desacuerdo)  89.78%       91.42%  93.30%  90.71%  92.26%
+              Total 100.00%      100.00% 100.00% 100.00% 100.00%</code></pre>
+</div>
+</div>
+<p><em>porcentaje del total</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P2_10 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P2_10)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(P6_2_4, P2_10, <span class="at">show_mising_leveles=</span>F) <span class="sc">%&gt;%</span> <span class="co"># tabulado NO quiero que me aparezcan categorías en cero</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_totals</span>(<span class="at">where =</span> <span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>)) <span class="sc">%&gt;%</span> <span class="co"># totales</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_percentages</span>(<span class="at">denominator =</span> <span class="st">"all"</span>) <span class="sc">%&gt;%</span> <span class="co"># aquí pongo el denominador</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">adorn_pct_formatting</span>(<span class="at">digits=</span><span class="dv">2</span>) <span class="co"># numero de decimales</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             P6_2_4     Sí Sí, en parte     No No sabe   Total
+    Sí (de acuerdo)  2.83%        0.12%  4.66%   0.13%   7.74%
+ No (en desacuerdo) 24.89%        1.25% 64.88%   1.23%  92.26%
+              Total 27.73%        1.37% 69.54%   1.36% 100.00%</code></pre>
+</div>
+</div>
+</section>
+<section id="tabulados-de-doble-entrada-con-factor-de-expansión" class="level3">
+<h3 class="anchored" data-anchor-id="tabulados-de-doble-entrada-con-factor-de-expansión">Tabulados de doble entrada con factor de expansión</h3>
+<p>En general, cuando hacemos nuestros tabulados para análisis descriptivo nos gusta presentar los datos expandidos.</p>
+<p>Con factor de expansión es un poco distinto.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulado con factor de expansión</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P2_10 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P2_10)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  pollster<span class="sc">::</span><span class="fu">crosstab</span>(P6_2_4, P2_10, <span class="at">weight=</span>FAC_MUJ) <span class="co"># checa donde debes sustituir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  P6_2_4                Sí `Sí, en parte`    No `No sabe`        n
+  &lt;fct&gt;              &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;int&gt;
+1 Sí (de acuerdo)     34.6           1.47  62.6      1.38  3599461
+2 No (en desacuerdo)  24.6           1.33  72.8      1.27 46884912</code></pre>
+</div>
+</div>
+<p>Este comando nos da el formato un poco diferente, por nos da los porcentajes y las n.</p>
+<p>Pongamos más adornos</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulado con factor de expansión</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P2_10 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P2_10)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  pollster<span class="sc">::</span><span class="fu">crosstab</span>(P6_2_4, P2_10, <span class="at">weight=</span>FAC_MUJ, </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pct =</span> <span class="st">"column"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  P6_2_4                      Sí `Sí, en parte`          No `No sabe`
+  &lt;chr&gt;                    &lt;dbl&gt;          &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Sí (de acuerdo)           9.75           7.82        6.19      7.69
+2 No (en desacuerdo)       90.3           92.2        93.8      92.3 
+3 n                  12777785         676032    36383319    647237   </code></pre>
+</div>
+</div>
+<p>No se ve como mucho, así que cambiaremos la notación</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulado con factor de expansión</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P2_10 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P2_10)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  pollster<span class="sc">::</span><span class="fu">crosstab</span>(P6_2_4, P2_10, <span class="at">weight=</span>FAC_MUJ, </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pct =</span> <span class="st">"column"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  P6_2_4                      Sí `Sí, en parte`          No `No sabe`
+  &lt;chr&gt;                    &lt;dbl&gt;          &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1 Sí (de acuerdo)           9.75           7.82        6.19      7.69
+2 No (en desacuerdo)       90.3           92.2        93.8      92.3 
+3 n                  12777785         676032    36383319    647237   </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulado con factor de expansión</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P2_10 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P2_10)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  pollster<span class="sc">::</span><span class="fu">crosstab</span>(P6_2_4, P2_10, <span class="at">weight=</span>FAC_MUJ, </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pct =</span> <span class="st">"column"</span>, <span class="at">n=</span>F) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="at">where=</span> <span class="st">"row"</span>) <span class="co"># el contrario que pedimos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             P6_2_4        Sí Sí, en parte         No    No sabe
+    Sí (de acuerdo)   9.74557     7.816198   6.188583   7.685129
+ No (en desacuerdo)  90.25443    92.183802  93.811417  92.314871
+              Total 100.00000   100.000000 100.000000 100.000000</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulado con factor de expansión</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P2_10 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P2_10)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  pollster<span class="sc">::</span><span class="fu">crosstab</span>(P6_2_4, P2_10, <span class="at">weight=</span>FAC_MUJ, </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">pct =</span> <span class="st">"row"</span>, <span class="at">n=</span>F) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="at">where=</span> <span class="st">"col"</span>) <span class="co"># el contrario que pedimos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             P6_2_4       Sí Sí, en parte       No  No sabe Total
+    Sí (de acuerdo) 34.59596     1.467998 62.55414 1.381901   100
+ No (en desacuerdo) 24.59750     1.329195 72.79891 1.274389   100</code></pre>
+</div>
+</div>
+</section>
+<section id="gráficas-con-esquisse" class="level3">
+<h3 class="anchored" data-anchor-id="gráficas-con-esquisse">Gráficas con <code>{esquisse}</code></h3>
+<p>Podemos hacerlo con los datos de origen. Es importante guardar nuestra base con sus etiquetas para que la lea esquisse.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>base_esquisse2<span class="ot">&lt;-</span>base <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P2_10 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P2_10)) <span class="sc">%&gt;%</span> <span class="co"># primera variable con etiquetas</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4))  <span class="co"># primera variable con etiquetas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La idea es que la variable cualitativa está en en x o en y y la otra en “fill”. La que vaya en ésta última generará los colores.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ima/esquisse_barra2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">1</figcaption><p></p>
+</figure>
+</div>
+<p><img src="ima/esquisse_barra1.png" class="img-fluid" alt="1"> Recuerda que podemos cambiar las posiciones para ver qué tipo de gráficas tenemos.</p>
+<p><img src="ima/esquisse_barra3.png" class="img-fluid" alt="1"> Las paletas son muy imporntates, sobre todo porque haremos nuestros carteles.</p>
+<p>Recuerda que también puedes agregar el factor de expansión en tus grácias. En tuerquita de esquisse puede seleccionar weight para mostrarlo</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ima/esquisse3.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">1</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="análisis-cuantitativo-bivariado-cuali---cuanti" class="level2">
+<h2 class="anchored" data-anchor-id="análisis-cuantitativo-bivariado-cuali---cuanti">Análisis cuantitativo bivariado Cuali - cuanti</h2>
+<section id="medidas-númericas" class="level3">
+<h3 class="anchored" data-anchor-id="medidas-númericas">Medidas númericas</h3>
+<p>Será muy fácil con dplyr, tenemos nuestro análisis univariado</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>endireh2021_corta_muj <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mi_media=</span><span class="fu">mean</span>(ANIOS_ESC, <span class="at">na.rm=</span>T), </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mi_sd=</span><span class="fu">sd</span>(ANIOS_ESC, <span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mi_media    mi_sd
+1  9.66723 4.641117</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>endireh2021_corta_muj <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_2_4 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_2_4)) <span class="sc">%&gt;%</span>   <span class="co"># variable cuali con etiquetas</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(P6_2_4) <span class="sc">%&gt;%</span> <span class="co"># Aquí la variable</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">media=</span><span class="fu">mean</span>(ANIOS_ESC, <span class="at">na.rm=</span>T), </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sd=</span><span class="fu">sd</span>(ANIOS_ESC, <span class="at">na.rm=</span>T), </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">q1=</span><span class="fu">quantile</span>(ANIOS_ESC, <span class="at">na.rm =</span> T, <span class="at">prob=</span><span class="fl">0.25</span>),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">med=</span><span class="fu">median</span>(ANIOS_ESC, <span class="at">na.rm=</span>T),</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">q3=</span><span class="fu">quantile</span>(ANIOS_ESC, <span class="at">na.rm =</span> T, <span class="at">prob=</span><span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  P6_2_4             media    sd    q1   med    q3
+  &lt;fct&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Sí (de acuerdo)     6.30  4.68     2     6     9
+2 No (en desacuerdo)  9.95  4.53     7     9    12</code></pre>
+</div>
+</div>
+</section>
+<section id="gráficas-con-esquisse-1" class="level3">
+<h3 class="anchored" data-anchor-id="gráficas-con-esquisse-1">Gráficas con <code>{esquisse}</code></h3>
+<p>Vamos a usar la misma base.</p>
+<section id="gráfica-de-densidad" class="level4">
+<h4 class="anchored" data-anchor-id="gráfica-de-densidad">Gráfica de densidad</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ima/esquisse2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">1</figcaption><p></p>
+</figure>
+</div>
+<p>En relleno y en facet ponemos la variable cualitativa.</p>
+</section>
+<section id="gráfica-de-histograma" class="level4">
+<h4 class="anchored" data-anchor-id="gráfica-de-histograma">Gráfica de histograma</h4>
+<p>Igual, pero recuerda modificar las “cajitas” a un mejor valor</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ima/histograma_doble.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">2</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="gráfica-de-boxplot" class="level4">
+<h4 class="anchored" data-anchor-id="gráfica-de-boxplot">Gráfica de boxplot</h4>
+<p>Igual, pero recuerda modificar las “cajitas” a un mejor valor</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ima/boxplot_dos.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">1</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="análisis-cuantitativo-bivariado-cuanti---cuanti" class="level2">
+<h2 class="anchored" data-anchor-id="análisis-cuantitativo-bivariado-cuanti---cuanti">Análisis cuantitativo bivariado Cuanti - cuanti</h2>
+<section id="medidas-númericas-1" class="level3">
+<h3 class="anchored" data-anchor-id="medidas-númericas-1">Medidas númericas</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(index_labo9<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># si nuestras variables llevan filtro</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(EDAD, ANIOS_ESC, index_labo9) <span class="sc">%&gt;%</span> <span class="co"># puras variables númericas</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  corrr<span class="sc">::</span><span class="fu">correlate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Correlation computed with
+• Method: 'pearson'
+• Missing treated using: 'pairwise.complete.obs'</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  term           EDAD ANIOS_ESC index_labo9
+  &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+1 EDAD        NA        -0.309      -0.0937
+2 ANIOS_ESC   -0.309    NA           0.0915
+3 index_labo9 -0.0937    0.0915     NA     </code></pre>
+</div>
+</div>
+<p>lm()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(index_labo9<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># si nuestras variables llevan filtro</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with</span>(</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(index_labo9 <span class="sc">~</span> ANIOS_ESC)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = index_labo9 ~ ANIOS_ESC)
+
+Coefficients:
+(Intercept)    ANIOS_ESC  
+   0.121139     0.002709  </code></pre>
+</div>
+</div>
+</section>
+<section id="gráficas-con-ggallyggpairs" class="level3">
+<h3 class="anchored" data-anchor-id="gráficas-con-ggallyggpairs">Gráficas con <code>GGally:ggpairs()</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(index_labo9<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># si nuestras variables llevan filtro</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(EDAD, ANIOS_ESC, index_labo9) <span class="sc">%&gt;%</span> <span class="co"># puras variables númericas</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="P6_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="gráficas-individuales-de-correlación-con-ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="gráficas-individuales-de-correlación-con-ggplot2">Gráficas individuales de correlación con <code>{ggplot2}</code></h3>
+<section id="con-geom_point" class="level4">
+<h4 class="anchored" data-anchor-id="con-geom_point">con <code>geom_point</code></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(index_labo9<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># si nuestras variables llevan filtro</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ANIOS_ESC, <span class="at">y=</span>index_labo9)) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="P6_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="con-geom_jitter" class="level4">
+<h4 class="anchored" data-anchor-id="con-geom_jitter">con <code>geom_jitter()</code></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(index_labo9<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># si nuestras variables llevan filtro</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ANIOS_ESC, <span class="at">y=</span>index_labo9)) <span class="sc">+</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="P6_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="con-geom_smooth" class="level4">
+<h4 class="anchored" data-anchor-id="con-geom_smooth">con <code>geom_smooth()</code></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>base <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(index_labo9<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># si nuestras variables llevan filtro</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ANIOS_ESC, <span class="at">y=</span>index_labo9)) <span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="P6_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

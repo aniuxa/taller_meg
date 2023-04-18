@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://aniuxa.github.io/taller_meg/P5.html</loc>
-    <lastmod>2023-04-12T15:38:06.847Z</lastmod>
+    <loc>https://aniuxa.github.io/taller_meg/index.html</loc>
+    <lastmod>2023-04-18T23:24:44.633Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/instala.html</loc>
+    <lastmod>2023-04-18T23:24:44.951Z</lastmod>
   </url>
   <url>
     <loc>https://aniuxa.github.io/taller_meg/P1.html</loc>
-    <lastmod>2023-04-12T15:38:23.052Z</lastmod>
+    <lastmod>2023-04-18T23:26:37.112Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/P2.html</loc>
+    <lastmod>2023-04-18T23:26:44.045Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/P3.html</loc>
+    <lastmod>2023-04-18T23:26:47.200Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/docs.html</loc>
+    <lastmod>2023-04-18T23:26:47.519Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/P6.html</loc>
+    <lastmod>2023-04-18T23:28:24.197Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/P4.html</loc>
+    <lastmod>2023-04-18T23:27:08.708Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aniuxa.github.io/taller_meg/P5.html</loc>
+    <lastmod>2023-04-18T23:27:15.665Z</lastmod>
   </url>
 </urlset>

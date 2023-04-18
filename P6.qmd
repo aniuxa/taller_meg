@@ -1,0 +1,325 @@
+---
+title: "Taller práctico II"
+---
+
+
+```{r}
+if (!require("pacman")) install.packages("pacman") # instala pacman si se requiere
+pacman::p_load(tidyverse, readxl, writexl, haven, esquisse, 
+               sjlabelled, pollster, janitor, magrittr, GGally, 
+               scales, corrr, ggthemes) #carga los paquetes listados
+
+```
+
+## Datos
+
+Tenemos la base etiquetada acá, hay que descargarla y ponerla en nuestra carpeta de datos en nuestro proyecto <https://www.dropbox.com/s/pud43k27iwfr73d/endireh2021_sel_muj.RData?dl=0>
+
+La cargamos con el siguiente código
+
+```{r 3}
+load("datos/endireh2021_sel_muj.RData")
+```
+
+Hay dos opciones:
+
+1. Vuelves a hacer tu selección 
+2. Vuelves a correr todo tu código final del taller pasado. 
+
+**NO OLVIDES APLICAR LOS FILTROS NECESARIOS PARA TUS VARIABLES**
+
+Para hacer esta práctica yo eligiré un par de variables para hacer los ejemplos del análisis cuantitativo bivariado. 
+
+```{r}
+base<- endireh2021_corta_muj %>% 
+  filter(EDAD<98) %>% # ejemplo de filtro
+  select(starts_with("ID"), PAREN:T_INSTRUM, 
+         ANIOS_ESC, starts_with("index"),
+         P6_2_4, FAC_MUJ)
+```
+
+RECUERDA QUE TODO DEPENDE DE TUS VARIABLES
+
+El diccionario de datos está acá <https://www.inegi.org.mx/rnm/index.php/catalog/801/data-dictionary/>
+
+## Análisis cuantitativo bivariado Cuali - cuali
+
+### Tabulados de doble entrada sin factor de expansión
+
+Uso: condición indígena y ¿Está usted de acuerdo en que las mujeres casadas deben tener relaciones sexuales con su esposo cuando él quiera?
+
+Este es un código para dar la tabla de frecuencias simple. Nos da las frecuencias
+```{r}
+
+# tabulado sin expansión
+base %>% 
+  dplyr::mutate(P2_10 = sjlabelled::as_label(P2_10)) %>% # primera variable con etiquetas
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4)) %>% # primera variable con etiquetas
+  janitor::tabyl(P6_2_4, P2_10, show_mising_leveles=F) %>% # tabulado NO quiero que me aparezcan categorías en cero
+  janitor::adorn_totals(where = c("row", "col"))
+
+
+```
+La primera variable genera los valores de las filas y la segunda las columnas. Checa que tus categorías no sean tan pequeñitas. 
+
+No nos da porcentajes a menos que se los pidamos. Lo dejo acá, **pero no lo solicito en el trabajo**, en el trabajo sólo quiero los valores expandidos.
+
+*Porcentaje de filas*
+
+
+```{r}
+
+base %>% 
+  dplyr::mutate(P2_10 = sjlabelled::as_label(P2_10)) %>% # primera variable con etiquetas
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4)) %>% # primera variable con etiquetas
+  janitor::tabyl(P6_2_4, P2_10, show_mising_leveles=F) %>% # tabulado NO quiero que me aparezcan categorías en cero
+  janitor::adorn_totals(where = c("row", "col")) %>% # totales
+  janitor::adorn_percentages(denominator = "row") %>% # aquí pongo el denominador
+  janitor::adorn_pct_formatting(digits=2) # numero de decimales
+
+
+```
+
+*porcentaje de columnas*
+```{r}
+
+base %>% 
+  dplyr::mutate(P2_10 = sjlabelled::as_label(P2_10)) %>% # primera variable con etiquetas
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4)) %>% # primera variable con etiquetas
+  janitor::tabyl(P6_2_4, P2_10, show_mising_leveles=F) %>% # tabulado NO quiero que me aparezcan categorías en cero
+  janitor::adorn_totals(where = c("row", "col")) %>% # totales
+  janitor::adorn_percentages(denominator = "col") %>% # aquí pongo el denominador
+  janitor::adorn_pct_formatting(digits=2) # numero de decimales
+
+
+```
+
+*porcentaje del total*
+
+```{r}
+
+base %>% 
+  dplyr::mutate(P2_10 = sjlabelled::as_label(P2_10)) %>% # primera variable con etiquetas
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4)) %>% # primera variable con etiquetas
+  janitor::tabyl(P6_2_4, P2_10, show_mising_leveles=F) %>% # tabulado NO quiero que me aparezcan categorías en cero
+  janitor::adorn_totals(where = c("row", "col")) %>% # totales
+  janitor::adorn_percentages(denominator = "all") %>% # aquí pongo el denominador
+  janitor::adorn_pct_formatting(digits=2) # numero de decimales
+
+
+```
+
+### Tabulados de doble entrada con factor de expansión
+
+En general, cuando hacemos nuestros tabulados para análisis descriptivo nos gusta presentar los datos expandidos.
+
+Con factor de expansión es un poco distinto.
+
+```{r}
+# tabulado con factor de expansión
+
+base %>% 
+  dplyr::mutate(P2_10 = sjlabelled::as_label(P2_10)) %>% # primera variable con etiquetas
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4)) %>% # primera variable con etiquetas
+  pollster::crosstab(P6_2_4, P2_10, weight=FAC_MUJ) # checa donde debes sustituir
+
+```
+
+Este comando nos da el formato un poco diferente, por nos da los porcentajes y las n.
+
+Pongamos más adornos
+
+```{r}
+# tabulado con factor de expansión
+
+base %>% 
+  dplyr::mutate(P2_10 = sjlabelled::as_label(P2_10)) %>% # primera variable con etiquetas
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4)) %>% # primera variable con etiquetas
+  pollster::crosstab(P6_2_4, P2_10, weight=FAC_MUJ, 
+                     pct = "column") 
+```
+
+No se ve como mucho, así que cambiaremos la notación 
+
+
+```{r}
+# tabulado con factor de expansión
+
+base %>% 
+  dplyr::mutate(P2_10 = sjlabelled::as_label(P2_10)) %>% # primera variable con etiquetas
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4)) %>% # primera variable con etiquetas
+  pollster::crosstab(P6_2_4, P2_10, weight=FAC_MUJ, 
+                     pct = "column") 
+```
+
+
+```{r}
+# tabulado con factor de expansión
+
+base %>% 
+  dplyr::mutate(P2_10 = sjlabelled::as_label(P2_10)) %>% # primera variable con etiquetas
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4)) %>% # primera variable con etiquetas
+  pollster::crosstab(P6_2_4, P2_10, weight=FAC_MUJ, 
+                     pct = "column", n=F) %>% 
+  adorn_totals(where= "row") # el contrario que pedimos
+```
+
+
+```{r}
+# tabulado con factor de expansión
+
+base %>% 
+  dplyr::mutate(P2_10 = sjlabelled::as_label(P2_10)) %>% # primera variable con etiquetas
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4)) %>% # primera variable con etiquetas
+  pollster::crosstab(P6_2_4, P2_10, weight=FAC_MUJ, 
+                     pct = "row", n=F) %>% 
+  adorn_totals(where= "col") # el contrario que pedimos
+```
+
+### Gráficas con `{esquisse}`
+
+Podemos hacerlo con los datos de origen. 
+ Es importante guardar nuestra base con sus etiquetas para que la lea esquisse.
+
+```{r}
+
+base_esquisse2<-base %>% 
+  dplyr::mutate(P2_10 = sjlabelled::as_label(P2_10)) %>% # primera variable con etiquetas
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4))  # primera variable con etiquetas
+
+```
+
+La idea es que la variable cualitativa está en en x o en y y la otra en "fill". La que vaya en ésta última generará los colores. 
+
+![1](ima/esquisse_barra2.png)
+
+
+![1](ima/esquisse_barra1.png)
+Recuerda que podemos cambiar las posiciones para ver qué tipo de gráficas tenemos. 
+
+![1](ima/esquisse_barra3.png)
+Las paletas son muy imporntates, sobre todo porque haremos nuestros carteles.
+
+
+Recuerda que también puedes agregar el factor de expansión en tus grácias. En tuerquita de esquisse puede seleccionar weight para mostrarlo
+
+![1](ima/esquisse3.png)
+
+
+## Análisis cuantitativo bivariado Cuali - cuanti
+
+### Medidas númericas
+
+Será muy fácil con dplyr, tenemos nuestro análisis univariado
+
+```{r}
+
+
+endireh2021_corta_muj %>% 
+  dplyr::summarise(mi_media=mean(ANIOS_ESC, na.rm=T), 
+                   mi_sd=sd(ANIOS_ESC, na.rm=T))
+
+```
+
+
+```{r}
+
+endireh2021_corta_muj %>% 
+  dplyr::mutate(P6_2_4 = sjlabelled::as_label(P6_2_4)) %>%   # variable cuali con etiquetas
+  dplyr::group_by(P6_2_4) %>% # Aquí la variable
+  dplyr::summarise(media=mean(ANIOS_ESC, na.rm=T), 
+                   sd=sd(ANIOS_ESC, na.rm=T), 
+                   q1=quantile(ANIOS_ESC, na.rm = T, prob=0.25),
+                   med=median(ANIOS_ESC, na.rm=T),
+                   q3=quantile(ANIOS_ESC, na.rm = T, prob=0.75))
+
+```
+
+### Gráficas con `{esquisse}`
+
+Vamos a usar la misma base.
+
+#### Gráfica de densidad
+
+![1](ima/esquisse2.png)
+
+En relleno y en facet ponemos la variable cualitativa. 
+
+#### Gráfica de histograma
+
+Igual, pero recuerda modificar las "cajitas" a un mejor valor
+
+![2](ima/histograma_doble.png)
+
+
+#### Gráfica de boxplot
+
+Igual, pero recuerda modificar las "cajitas" a un mejor valor
+
+![1](ima/boxplot_dos.png)
+
+
+
+
+## Análisis cuantitativo bivariado Cuanti - cuanti
+
+### Medidas númericas
+
+```{r}
+base %>% 
+  filter(index_labo9>0) %>% # si nuestras variables llevan filtro
+  select(EDAD, ANIOS_ESC, index_labo9) %>% # puras variables númericas
+  corrr::correlate()
+```
+
+lm()
+```{r}
+base %>% 
+  filter(index_labo9>0) %>% # si nuestras variables llevan filtro
+  with(
+    lm(index_labo9 ~ ANIOS_ESC)
+  )
+```
+
+### Gráficas con `GGally:ggpairs()`
+
+
+```{r}
+base %>% 
+  filter(index_labo9>0) %>% # si nuestras variables llevan filtro
+  select(EDAD, ANIOS_ESC, index_labo9) %>% # puras variables númericas
+  ggpairs()
+```
+
+
+### Gráficas individuales de correlación con `{ggplot2}`
+
+#### con `geom_point`
+
+```{r}
+base %>% 
+  filter(index_labo9>0) %>% # si nuestras variables llevan filtro
+  ggplot(aes(x=ANIOS_ESC, y=index_labo9)) +
+  geom_point()
+```
+
+
+#### con `geom_jitter()`
+
+```{r}
+base %>% 
+  filter(index_labo9>0) %>% # si nuestras variables llevan filtro
+  ggplot(aes(x=ANIOS_ESC, y=index_labo9)) +
+  geom_jitter(alpha=0.2)
+```
+
+
+#### con `geom_smooth()`
+
+```{r}
+base %>% 
+  filter(index_labo9>0) %>% # si nuestras variables llevan filtro
+  ggplot(aes(x=ANIOS_ESC, y=index_labo9)) +
+  geom_jitter(alpha=0.2) +
+  geom_smooth(method=lm)
+```

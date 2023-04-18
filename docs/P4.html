@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Métodos Cuantitativos - Taller práctico I</title>
+<title>Métodos Cuantitativos - Taller 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -162,7 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Taller práctico I</h1>
+      <h1 class="quarto-secondary-nav-title">Taller 4</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -220,12 +220,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./P4.html" class="sidebar-item-text sidebar-link">Taller 4</a>
+  <a href="./P4.html" class="sidebar-item-text sidebar-link active">Taller 4</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./P5.html" class="sidebar-item-text sidebar-link active">Taller práctico I</a>
+  <a href="./P5.html" class="sidebar-item-text sidebar-link">Taller práctico I</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -244,21 +244,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#datos" id="toc-datos" class="nav-link active" data-scroll-target="#datos">Datos</a></li>
-  <li><a href="#revisión-de-etiquetas" id="toc-revisión-de-etiquetas" class="nav-link" data-scroll-target="#revisión-de-etiquetas">Revisión de etiquetas</a></li>
-  <li><a href="#selección-de-variables" id="toc-selección-de-variables" class="nav-link" data-scroll-target="#selección-de-variables">Selección de variables</a></li>
-  <li><a href="#ejemplo-tabulados-simples" id="toc-ejemplo-tabulados-simples" class="nav-link" data-scroll-target="#ejemplo-tabulados-simples">Ejemplo tabulados simples</a></li>
-  <li><a href="#ejemplo-análisis-cuantitativo" id="toc-ejemplo-análisis-cuantitativo" class="nav-link" data-scroll-target="#ejemplo-análisis-cuantitativo">Ejemplo análisis cuantitativo</a></li>
-  <li><a href="#gráficas" id="toc-gráficas" class="nav-link" data-scroll-target="#gráficas">Gráficas</a></li>
+  <li><a href="#datos" id="toc-datos" class="nav-link active" data-scroll-target="#datos">Datos —</a></li>
+  <li><a href="#descriptivos-bivariados-cuanti-vs-cuanti" id="toc-descriptivos-bivariados-cuanti-vs-cuanti" class="nav-link" data-scroll-target="#descriptivos-bivariados-cuanti-vs-cuanti">Descriptivos bivariados: cuanti vs cuanti</a></li>
+  <li><a href="#revisión-de-la-nueva-base" id="toc-revisión-de-la-nueva-base" class="nav-link" data-scroll-target="#revisión-de-la-nueva-base">Revisión de la nueva base</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aniuxa/taller_meg/edit/main/P5.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aniuxa/taller_meg/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aniuxa/taller_meg/edit/main/P4.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aniuxa/taller_meg/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Taller práctico I</h1>
+<h1 class="title d-none d-lg-block">Taller 4</h1>
 </div>
 
 
@@ -282,173 +279,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               sjlabelled, pollster, janitor, magrittr, GGally, corrr) <span class="co">#carga los paquetes listados</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="datos" class="level2">
-<h2 class="anchored" data-anchor-id="datos">Datos</h2>
-<p>Tenemos la base etiquetada acá, hay que descargarla y ponerla en nuestra carpeta de datos en nuestro proyecto <a href="https://www.dropbox.com/s/pud43k27iwfr73d/endireh2021_sel_muj.RData?dl=0" class="uri">https://www.dropbox.com/s/pud43k27iwfr73d/endireh2021_sel_muj.RData?dl=0</a></p>
-<p>La cargamos con el siguiente código</p>
+<h2 class="anchored" data-anchor-id="datos">Datos —</h2>
+<p><a href="https://github.com/aniuxa/taller_meg/raw/main/datos/ICE_2022.xlsx" class="uri">https://github.com/aniuxa/taller_meg/raw/main/datos/ICE_2022.xlsx</a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"datos/endireh2021_sel_muj.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="revisión-de-etiquetas" class="level2">
-<h2 class="anchored" data-anchor-id="revisión-de-etiquetas">Revisión de etiquetas</h2>
-<p>Esta base se etiquetó tanto en nombres como en valores, para su fácil uso</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(endireh2021_corta_muj<span class="sc">$</span>NIV)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> endireh2021_corta_muj$NIV     n     percent
-                         0  5795 0.052621065
-                         1   101 0.000917123
-                         2 24444 0.221961917
-                         3 31029 0.281756517
-                         4 21703 0.197072471
-                         5   618 0.005611703
-                         6  2530 0.022973476
-                         7  2125 0.019295904
-                         8   349 0.003169068
-                         9  2118 0.019232341
-                        10 17326 0.157327449
-                        11  1989 0.018060966</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(endireh2021_corta_muj<span class="sc">$</span>NIV))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            sjlabelled::as_label(endireh2021_corta_muj$NIV)     n     percent
-                                                    Ninguno  5795 0.052621065
-                                                 Preescolar   101 0.000917123
-                                                   Primaria 24444 0.221961917
-                                                 Secundaria 31029 0.281756517
-                                Preparatoria o bachillerato 21703 0.197072471
-     Estudios técnicos o comerciales con primaria terminada   618 0.005611703
-   Estudios técnicos o comerciales con secundaria terminada  2530 0.022973476
- Estudios técnicos o comerciales con preparatoria terminada  2125 0.019295904
-                 Normal con primaria o secundaria terminada   349 0.003169068
-                                        Normal licenciatura  2118 0.019232341
-                                 Licenciatura o profesional 17326 0.157327449
-              Posgrado (Especialidad, Maestría o Doctorado)  1989 0.018060966</code></pre>
-</div>
-</div>
-<p>Podemos revisar el nombre de la variable y sus etiquetas así:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># etiquetas de variables</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_label</span>(endireh2021_corta_muj<span class="sc">$</span>NIV)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Nivel"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#etiquetas de valores</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_labels</span>(endireh2021_corta_muj<span class="sc">$</span>NIV)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "Ninguno"                                                   
- [2] "Preescolar"                                                
- [3] "Primaria"                                                  
- [4] "Secundaria"                                                
- [5] "Preparatoria o bachillerato"                               
- [6] "Estudios técnicos o comerciales con primaria terminada"    
- [7] "Estudios técnicos o comerciales con secundaria terminada"  
- [8] "Estudios técnicos o comerciales con preparatoria terminada"
- [9] "Normal con primaria o secundaria terminada"                
-[10] "Normal licenciatura"                                       
-[11] "Licenciatura o profesional"                                
-[12] "Posgrado (Especialidad, Maestría o Doctorado)"             </code></pre>
-</div>
-</div>
-</section>
-<section id="selección-de-variables" class="level2">
-<h2 class="anchored" data-anchor-id="selección-de-variables">Selección de variables</h2>
-<p>Lo ideal es hacer una selección de variables de acuerdo a tu interés y los elementos señalados en las instrucciones</p>
-<p>Dejemos siempre los ID para por cualquier cosa y el factor de expansión</p>
-<p><code>base&lt;-endireh2021_corta_muj %&gt;%    select(starts_with("ID"),c(var1, var2, var3, var4, FAC_MUJ))</code></p>
-<p>Sustituye</p>
-<p>Después de esto liberemos la memoria</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           used  (Mb) gc trigger  (Mb) limit (Mb) max used  (Mb)
-Ncells  1707764  91.3    3239054 173.0         NA  2982887 159.4
-Vcells 85682509 653.8  105493400 804.9      16384 87844496 670.3</code></pre>
-</div>
-</div>
-</section>
-<section id="ejemplo-tabulados-simples" class="level2">
-<h2 class="anchored" data-anchor-id="ejemplo-tabulados-simples">Ejemplo tabulados simples</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulado simple</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>endireh2021_corta_muj <span class="sc">%&gt;%</span> </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_1_1 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_1_1)) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">tabyl</span>(P6_1_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    P6_1_1     n     percent
-  La mujer  9208 0.083612556
- El hombre   920 0.008353991
-     Ambos 99999 0.908033452</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulado con factor de expansión</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>endireh2021_corta_muj <span class="sc">%&gt;%</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">P6_1_1 =</span> sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(P6_1_1)) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  pollster<span class="sc">::</span><span class="fu">topline</span>(P6_1_1 , <span class="at">weight =</span> FAC_MUJ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ICE_2022 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"datos/ICE_2022.xlsx"</span>) <span class="sc">%&gt;%</span>  <span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `P6_1_1 = forcats::fct_explicit_na(P6_1_1)`.
-Caused by warning:
-! `fct_explicit_na()` was deprecated in forcats 1.0.0.
-ℹ Please use `fct_na_value_to_level()` instead.
-ℹ The deprecated feature was likely used in the pollster package.
-  Please report the issue to the authors.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  Response  Frequency Percent `Valid Percent` `Cumulative Percent`
-  &lt;fct&gt;         &lt;int&gt;   &lt;dbl&gt;           &lt;dbl&gt;                &lt;dbl&gt;
-1 La mujer    4067451   8.05            8.05                  8.05
-2 El hombre    406642   0.805           0.805                 8.86
-3 Ambos      46049376  91.1            91.1                 100   </code></pre>
+<pre><code>New names:
+• `` -&gt; `...75`</code></pre>
 </div>
 </div>
 </section>
-<section id="ejemplo-análisis-cuantitativo" class="level2">
-<h2 class="anchored" data-anchor-id="ejemplo-análisis-cuantitativo">Ejemplo análisis cuantitativo</h2>
+<section id="descriptivos-bivariados-cuanti-vs-cuanti" class="level2">
+<h2 class="anchored" data-anchor-id="descriptivos-bivariados-cuanti-vs-cuanti">Descriptivos bivariados: cuanti vs cuanti</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>endireh2021_corta_muj <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(index_labo9) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  index_labo9   
- Min.   :0.000  
- 1st Qu.:0.000  
- Median :0.000  
- Mean   :0.028  
- 3rd Qu.:0.000  
- Max.   :1.000  
- NA's   :21709  </code></pre>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ICE_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(id, edo)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  GGally<span class="sc">::</span><span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="P4_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>endireh2021_corta_muj <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(index_labo9<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> <span class="co"># cuando sí han sufrido violencia laboral</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(index_labo9) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ICE_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">with</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">correlate</span>(homicidios, secuestros)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Correlation computed with
+• Method: 'pearson'
+• Missing treated using: 'pairwise.complete.obs'</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  index_labo9     
- Min.   :0.05263  
- 1st Qu.:0.05263  
- Median :0.10526  
- Mean   :0.15170  
- 3rd Qu.:0.21053  
- Max.   :1.00000  </code></pre>
+<pre><code># A tibble: 1 × 2
+  term      x
+  &lt;chr&gt; &lt;dbl&gt;
+1 x     0.463</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>endireh2021_corta_muj <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mi_media=</span><span class="fu">mean</span>(index_labo9, <span class="at">na.rm=</span>T), </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mi_sd=</span><span class="fu">sd</span>(index_labo9, <span class="at">na.rm=</span>T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ICE_2022 <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">with</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">lm</span>(homicidios <span class="sc">~</span>  secuestros)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    mi_media      mi_sd
-1 0.02847479 0.08272947</code></pre>
+<pre><code>
+Call:
+lm(formula = homicidios ~ secuestros)
+
+Coefficients:
+(Intercept)   secuestros  
+      9.177       31.301  </code></pre>
 </div>
 </div>
 </section>
-<section id="gráficas" class="level2">
-<h2 class="anchored" data-anchor-id="gráficas">Gráficas</h2>
-<p>Esta base nos la podemos llevar a esquisse. Recuerda.</p>
+<section id="revisión-de-la-nueva-base" class="level2">
+<h2 class="anchored" data-anchor-id="revisión-de-la-nueva-base">Revisión de la nueva base</h2>
+<p><a href="https://www.dropbox.com/s/lk2eqmro8e1n4wo/endireh2021_sel_muj.RData?dl=0" class="uri">https://www.dropbox.com/s/lk2eqmro8e1n4wo/endireh2021_sel_muj.RData?dl=0</a></p>
+<p>Tenemos un par de índices</p>
 
 
 </section>

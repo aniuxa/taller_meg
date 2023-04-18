@@ -15,7 +15,7 @@ pacman::p_load(tidyverse, readxl, writexl, haven,
 
 ```
 
-# Datos
+## Datos
 
 ```{r}
 load("datos/endireh2021_pegadaCDMX.RData")
@@ -86,7 +86,7 @@ endireh2021_CDMX<- endireh2021_CDMX  %>% # esto asegura que los cambios queden e
   dplyr::mutate_at(vars(starts_with("P6_1")), ~ set_labels(.x, labels=etiqueta_6_1)) # las etiqueta .x
 
 ```
-
+## Tabulados
 Hoy sí ya podemos hacer tabulados con la certeza que los cambios están en la base y que podemos volver y venir de las etiquetas:
 
 ```{r}

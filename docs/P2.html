@@ -228,6 +228,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./P5.html" class="sidebar-item-text sidebar-link">Taller práctico I</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./P6.html" class="sidebar-item-text sidebar-link">Taller práctico II</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -240,14 +245,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#paquete-pacman" id="toc-paquete-pacman" class="nav-link active" data-scroll-target="#paquete-pacman">Paquete <code>{pacman}</code></a></li>
-  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos">Datos</a>
-  <ul class="collapse">
+  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos">Datos</a></li>
   <li><a href="#pipes-o-tuberías" id="toc-pipes-o-tuberías" class="nav-link" data-scroll-target="#pipes-o-tuberías">Pipes o tuberías</a>
   <ul class="collapse">
   <li><a href="#ejemplo-de-etiquetado" id="toc-ejemplo-de-etiquetado" class="nav-link" data-scroll-target="#ejemplo-de-etiquetado">Ejemplo de etiquetado</a></li>
   <li><a href="#un-atajo" id="toc-un-atajo" class="nav-link" data-scroll-target="#un-atajo">Un atajo</a></li>
-  <li><a href="#ojeando" id="toc-ojeando" class="nav-link" data-scroll-target="#ojeando">Ojeando</a></li>
   </ul></li>
+  <li><a href="#tabulados" id="toc-tabulados" class="nav-link" data-scroll-target="#tabulados">Tabulados</a>
+  <ul class="collapse">
+  <li><a href="#ojeando" id="toc-ojeando" class="nav-link" data-scroll-target="#ojeando">Ojeando</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/aniuxa/taller_meg/edit/main/P2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/aniuxa/taller_meg/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -285,11 +291,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               sjlabelled, pollster, janitor, magrittr) <span class="co">#carga los paquetes listados</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="datos" class="level1">
-<h1>Datos</h1>
+<section id="datos" class="level2">
+<h2 class="anchored" data-anchor-id="datos">Datos</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"datos/endireh2021_pegadaCDMX.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 <section id="pipes-o-tuberías" class="level2">
 <h2 class="anchored" data-anchor-id="pipes-o-tuberías">Pipes o tuberías</h2>
 <p>R utiliza dos pipes el nativo <code>|&gt;</code> y el pipe que está en <code>{dplyr}</code> <code>%&gt;%</code>.</p>
@@ -13930,6 +13937,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">"P6_1"</span>)), <span class="sc">~</span> <span class="fu">as.numeric</span>(.x) ) <span class="sc">%&gt;%</span>  <span class="co"># Vuelve numérico todas las variables .x</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">"P6_1"</span>)), <span class="sc">~</span> <span class="fu">set_labels</span>(.x, <span class="at">labels=</span>etiqueta_6_1)) <span class="co"># las etiqueta .x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+</section>
+<section id="tabulados" class="level2">
+<h2 class="anchored" data-anchor-id="tabulados">Tabulados</h2>
 <p>Hoy sí ya podemos hacer tabulados con la certeza que los cambios están en la base y que podemos volver y venir de las etiquetas:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tabulado simple</span></span>
@@ -13966,7 +13977,6 @@ Caused by warning:
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dará un warning, lo podemos ignorar.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
 <section id="ojeando" class="level3">
 <h3 class="anchored" data-anchor-id="ojeando">Ojeando</h3>
 <div class="cell">
@@ -16257,7 +16267,6 @@ $ P2_5    &lt;chr&gt; "97", "97", "01", "97", "97", "96", "02", "97", "96", "97"
 </div>
 
 
-</section>
 </section>
 </section>
 

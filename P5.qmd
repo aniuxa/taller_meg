@@ -11,7 +11,7 @@ pacman::p_load(tidyverse, readxl, writexl, haven, esquisse,
 
 ## Datos
 
-Tenemos la base etiquetada acá, hay que descargarla y ponerla en nuestra carpeta de datos en nuestro proyecto <https://www.dropbox.com/s/lk2eqmro8e1n4wo/endireh2021_sel_muj.RData?dl=0>
+Tenemos la base etiquetada acá, hay que descargarla y ponerla en nuestra carpeta de datos en nuestro proyecto <https://www.dropbox.com/s/pud43k27iwfr73d/endireh2021_sel_muj.RData?dl=0>
 
 La cargamos con el siguiente código
 
@@ -32,6 +32,7 @@ tabyl(sjlabelled::as_label(endireh2021_corta_muj$NIV))
 ```
 
 Podemos revisar el nombre de la variable y sus etiquetas así:
+
 ```{r}
 # etiquetas de variables
 get_label(endireh2021_corta_muj$NIV)
@@ -46,18 +47,15 @@ Lo ideal es hacer una selección de variables de acuerdo a tu interés y los ele
 
 Dejemos siempre los ID para por cualquier cosa y el factor de expansión
 
-
-`endireh2021_corta_muj %>% 
-  select(starts_with("ID",c(var1, var2, var3, var4, FAC_MUJ))
-`
+`base<-endireh2021_corta_muj %>%    select(starts_with("ID"),c(var1, var2, var3, var4, FAC_MUJ))`
 
 Sustituye
 
 Después de esto liberemos la memoria
+
 ```{r}
 gc()
 ```
-
 
 ## Ejemplo tabulados simples
 
@@ -84,7 +82,6 @@ endireh2021_corta_muj %>%
   summary()
 ```
 
-
 ```{r}
 endireh2021_corta_muj %>% 
   filter(index_labo9>0) %>% # cuando sí han sufrido violencia laboral
@@ -98,7 +95,6 @@ endireh2021_corta_muj %>%
   dplyr::summarise(mi_media=mean(index_labo9, na.rm=T), 
                    mi_sd=sd(index_labo9, na.rm=T))
 ```
-
 
 ## Gráficas
 
